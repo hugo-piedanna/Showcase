@@ -45,7 +45,7 @@ export default function FAQ() {
         <section
             className="container px-6 w-full mx-auto mt-20 gap-5 flex flex-col"
             id="faq">
-            <h2 className="text-3xl font-medium text-center">{"Questions fréquentes"}</h2>
+            <h2 className="text-3xl lg:text-4xl font-medium text-center">{"Questions fréquentes"}</h2>
 
             <Accordion
                 type="single"
@@ -56,7 +56,7 @@ export default function FAQ() {
                         key={index}
                         value={`item-${index + 1}`}>
                         <AccordionTrigger>{item.question}</AccordionTrigger>
-                        <AccordionContent className="flex flex-col gap-4 text-balance">
+                        <AccordionContent>
                             <div
                                 className="text-muted-foreground"
                                 dangerouslySetInnerHTML={{ __html: item.answer }}

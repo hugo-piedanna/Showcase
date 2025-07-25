@@ -14,7 +14,7 @@ export default function Home() {
                 <header>
                     <Header />
                 </header>
-                <main className="flex flex-col gap-10">
+                <main className="flex flex-col lg:gap-10">
                     <Hero />
                     <Trust />
                     <Offers />

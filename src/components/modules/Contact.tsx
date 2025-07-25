@@ -47,7 +47,10 @@ export default function Contact() {
             className="container px-6 w-full mx-auto mt-20 gap-5 flex flex-col"
             id="contact">
             <div>
-                <h2 className="text-3xl font-medium text-center">Discutons de votre projet !</h2>
+                <h2 className="text-3xl lg:text-4xl font-medium text-center">
+                    <span className="inline-flex sm:hidden">Discutons ensemble !</span>
+                    <span className="hidden sm:inline-flex">Discutons de votre projet !</span>
+                </h2>
                 <p className="text-muted-foreground text-center mt-4">
                     Vous avez un projet de site web ? Écrivez-moi un message et je vous réponds sous 24h. <br />
                     Même si vous ne savez pas par où commencer, je suis là pour vous guider.

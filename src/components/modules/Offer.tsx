@@ -56,10 +56,10 @@ export default function Offers() {
 
     return (
         <section
-            className="container px-6 w-full mx-auto mt-20 gap-5 flex flex-col"
+            className="container px-6 w-full mx-auto mt-20"
             id="offers">
             <div>
-                <h2 className="text-3xl font-medium text-center">{"Mes offres"}</h2>
+                <h2 className="text-3xl lg:text-4xl font-medium text-center">{"Mes offres"}</h2>
                 <p className="text-muted-foreground text-center mt-4">
                     Deux offres simples, sans frais cachés, qui répondent à vos besoins.
                 </p>
@@ -67,20 +67,20 @@ export default function Offers() {
             <div className="grid lg:grid-cols-2 gap-8 mt-10">
                 {offers.map((offer, index) => (
                     <Card
-                        className="lg:p-8 p-4 relative flex flex-col justify-between"
+                        className="lg:p-8 p-4 relative group"
                         key={index}>
-                        <CardTitle className="text-2xl">
+                        <CardTitle className="text-xl lg:text-2xl">
                             {offer.title}
                             <br />
                             <span className="font-light text-lg">
                                 {offer.scalable ? "À partir de" : ""}
-                                <span className="text-2xl font-bold"> {offer.price} €</span>
+                                <span className="text-xl lg:text-2xl font-bold"> {offer.price} €</span>
                                 {" TTC"}
                             </span>
                         </CardTitle>
                         <CardDescription>{offer.description}</CardDescription>
                         <div>
-                            <span className="text-lg font-semibold">Contenu :</span>
+                            <span className="text-md lg:text-lg font-semibold">Contenu :</span>
                             <ul className="text-muted-foreground">
                                 {offer.details.map((detail, index) => (
                                     <li key={index}>
@@ -105,8 +105,8 @@ export default function Offers() {
                             id="offer-footer">
                             {offer.ideal && (
                                 <div>
-                                    <span className="text-lg font-semibold">Parfait pour :</span>
-                                    <ul className="text-muted-foreground flex flex-row gap-1 mt-2">
+                                    <span className="text-md lg:text-lg font-semibold">Parfait pour :</span>
+                                    <ul className="text-muted-foreground flex flex-wrap gap-1 mt-2">
                                         {offer.ideal.map((item, index) => (
                                             <li
                                                 key={index}
@@ -127,7 +127,7 @@ export default function Offers() {
                 ))}
             </div>
             <div className="mt-10">
-                <h3 className="text-3xl font-medium text-center">{"Comparatif des offres"}</h3>
+                <h3 className="text-3xl lg:text-4xl font-medium text-center">{"Comparatif des offres"}</h3>
                 <Table className="mt-6">
                     <TableHeader>
                         <TableRow>
