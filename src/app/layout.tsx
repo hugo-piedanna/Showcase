@@ -89,6 +89,7 @@ export default function RootLayout({
                                     priceRange: "€€",
                                     address: {
                                         "@type": "PostalAddress",
+                                        postalCode: "31000",
                                         addressLocality: "Toulouse",
                                         addressCountry: "FR",
                                     },
