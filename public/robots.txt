@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://piedanna.dev
+
+# Sitemaps
+Sitemap: https://piedanna.dev/sitemap.xml
