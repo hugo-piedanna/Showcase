@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
     subsets: ["latin"],
 });
 
-export const metadata = {
+export const metadata: Metadata = {
     title: "Sites web pour indépendants & TPE – Hugo Piedanna",
     description:
         "Développeur web freelance, je crée des sites professionnels, rapides et abordables. Offre vitrine à 600€ et création sur-mesure pour les indépendants, artisans et TPE.",

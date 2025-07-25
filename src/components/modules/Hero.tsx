@@ -1,7 +1,9 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import Link from "next/link";
+import avatar from "@/assets/avatar.webp";
 
 export default function Home() {
     function scrollToSection(section: string) {
@@ -16,16 +18,16 @@ export default function Home() {
     }
 
     return (
-        <section
+        <div
             className="container w-full px-6 mx-auto relative"
             id="home">
             <div className="w-[500px] lg:w-[700px] h-[350px] bg-gradient-to-tr z-10 from-violet-500 to-rose-500 rounded-[100%] absolute top-[50%] left-[25%] opacity-50 translate-x-[-50%] lg:translate-x-[-70%] translate-y-[-70%] blur-[100px]"></div>
             <div className="grid xl:grid-cols-3 gap-8 pt-[15vh]">
                 <div className="flex flex-col lg:col-span-2 gap-5 h-full justify-center z-20">
-                    <h2 className="text-3xl lg:text-5xl font-bold leading-[2.3rem] lg:leading-[3.5rem]">
+                    <h1 className="text-3xl lg:text-5xl font-bold leading-[2.3rem] lg:leading-[3.5rem]">
                         Création de site web professionnel à partir de <span className="gradient">600 €</span> pour
                         entreprises & indépendants
-                    </h2>
+                    </h1>
                     <p className="etxt-md lg:text-lg">
                         Développeur web freelance, je vous propose des sites rapides, efficaces et abordables pour
                         améliorer votre visibilité en ligne. Idéal pour les artisans, freelances, commerçants,
@@ -50,13 +52,14 @@ export default function Home() {
                     </div>
                 </div>
                 <div className="hidden xl:flex flex-col gap-8 h-full justify-center border-none rounded-[100%]">
-                    <img
-                        src="assets/avatar.jpg"
+                    <Image
+                        src={avatar}
                         alt="Photo d'Hugo Piedanna"
                         className="rounded-xl"
+                        fetchPriority="high"
                     />
                 </div>
             </div>
-        </section>
+        </div>
     );
 }

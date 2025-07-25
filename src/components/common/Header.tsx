@@ -35,11 +35,11 @@ export default function Header() {
     return (
         <section className="border-b py-4 bg-background fixed top-0 left-0 w-full z-50">
             <nav className="container px-6 mx-auto flex justify-between items-center">
-                <h1 className="text-3xl font-bold inline-block gradient">
+                <h2 className="text-3xl font-bold inline-block gradient">
                     {"Hugo "}
                     <span className="inline-flex sm:hidden">P.</span>
                     <span className="hidden sm:inline-flex">Piedanna</span>
-                </h1>
+                </h2>
                 <div className="flex items-center gap-4 xl:gap-8">
                     <ul className="hidden xl:flex items-center gap-8">
                         {itemsButtons.map((item, index) => (
@@ -58,6 +58,7 @@ export default function Header() {
                             asChild
                             className="xl:hidden">
                             <Button
+                                aria-label="Menu déroulant"
                                 variant="outline"
                                 size="icon">
                                 <IconMenu2 size={18} />
