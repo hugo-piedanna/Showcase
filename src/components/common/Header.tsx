@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { IconMenu2 } from "@tabler/icons-react";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { useState } from "react";
+import Link from "next/link";
 
 interface items {
     libelle: string;
@@ -29,17 +30,23 @@ export default function Header() {
                 top: topOffset - 100,
                 behavior: "smooth",
             });
+        } else {
+            // Redirect to the home page if the section is not found
+            window.location.href = `/#${section}`;
         }
     }
 
     return (
         <section className="border-b py-4 bg-background fixed top-0 left-0 w-full z-50">
             <nav className="container px-6 mx-auto flex justify-between items-center">
-                <h2 className="text-3xl font-bold inline-block gradient">
-                    {"Hugo "}
-                    <span className="inline-flex sm:hidden">P.</span>
-                    <span className="hidden sm:inline-flex">Piedanna</span>
-                </h2>
+                <Link href={"/"}>
+                    <h2 className="text-3xl font-bold inline-block gradient">
+                        {"Hugo "}
+                        <span className="inline-flex sm:hidden">P.</span>
+                        <span className="hidden sm:inline-flex">Piedanna</span>
+                    </h2>
+                </Link>
+
                 <div className="flex items-center gap-4 xl:gap-8">
                     <ul className="hidden xl:flex items-center gap-8">
                         {itemsButtons.map((item, index) => (
