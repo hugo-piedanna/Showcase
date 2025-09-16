@@ -1,12 +1,24 @@
 services:
-  frontend:
-    build: 
-      context: .
-      dockerfile: Dockerfile.prod
-    container_name: portfolio
-    working_dir: /app
-    ports:
-      - "3000:3000"
-    environment:
-      - NODE_ENV=production
-    command: ["npm", "start"]
+    frontend:
+        build:
+            context: .
+            dockerfile: Dockerfile.prod
+        container_name: portfolio
+        working_dir: /app
+        ports:
+            - "3000:3000"
+        environment:
+            - NODE_ENV=production
+            - NEXT_PUBLIC_APP_URL=${NEXT_PUBLIC_APP_URL}
+            - NEXT_PUBLIC_EMAIL=${NEXT_PUBLIC_EMAIL}
+            - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
+            - NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=${NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}
+            - MINIO_ENDPOINT=${MINIO_ENDPOINT}
+            - MINIO_PORT=${MINIO_PORT}
+            - MINIO_USE_SSL=${MINIO_USE_SSL}
+            - MINIO_ACCESS_KEY=${MINIO_ACCESS_KEY}
+            - MINIO_SECRET_KEY=${MINIO_SECRET_KEY}
+            - MINIO_BUCKET=${MINIO_BUCKET}
+            - PRESIGNED_EXPIRY_SEC=${PRESIGNED_EXPIRY_SEC}
+            - FILE_NAME=${FILE_NAME}
+        command: ["npm", "start"]
