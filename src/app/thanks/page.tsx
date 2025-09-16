@@ -1,20 +1,14 @@
-"use client";
-
 import Footer from "@/components/common/Footer";
 import Header from "@/components/common/Header";
 import ThanksContent from "@/components/modules/Thanks";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { redirect, RedirectType, useSearchParams } from "next/navigation";
-import { connection } from "next/server";
-import { useEffect, useState } from "react";
+import { Metadata } from "next";
 
-type CheckoutData = {
-    email: string | null;
-    firstName: string | null;
-    lastName: string | null;
-    items: string[];
-    price: number;
+export const metadata: Metadata = {
+    title: "Merci !",
+    robots: {
+        index: false,
+        follow: false,
+    },
 };
 
 export default function Thanks() {

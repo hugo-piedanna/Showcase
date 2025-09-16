@@ -75,6 +75,11 @@ export default function RootLayout({
     return (
         <html lang="fr">
             <head>
+                <meta
+                    name="description"
+                    content={metadata.description!}
+                />
+
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{
