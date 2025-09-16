@@ -5,7 +5,7 @@ export default function Footer() {
     return (
         <section className="border-t w-full py-4 bg-background mt-20">
             <div className="container px-6 mx-auto flex justify-between flex-wrap gap-2">
-                <div className="flex flex-col gap-4 text-sm text-muted-foreground">
+                <div className="flex justify-between flex-col text-sm text-muted-foreground">
                     <p className="text-sm text-muted-foreground">
                         {`© ${new Date().getFullYear()} Hugo Piedanna. Tous droits réservés.`}
                     </p>
@@ -26,7 +26,7 @@ export default function Footer() {
                         </Link>
                     </div>
                 </div>
-                <div className="flex flex-col items-end gap-1 text-sm text-muted-foreground">
+                <div className="flex flex-col sm:items-end gap-1 text-sm text-muted-foreground">
                     <Link
                         href="/CGU"
                         className="flex items-center gap-2 underline-offset-4 hover:underline ">

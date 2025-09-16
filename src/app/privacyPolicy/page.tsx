@@ -1,7 +1,6 @@
 import Footer from "@/components/common/Footer";
 import Header from "@/components/common/Header";
 import { Legals, Section } from "@/components/common/legals/Legal";
-import { TracingBeam } from "@/components/ui/tracing-beam";
 
 export default function TOU() {
     const infos: Section[] = [

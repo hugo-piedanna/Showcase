@@ -4,6 +4,7 @@ import Contact from "@/components/modules/Contact";
 import FAQ from "@/components/modules/FAQ";
 import Hero from "@/components/modules/Hero";
 import Offers from "@/components/modules/Offer";
+import OfferContent from "@/components/modules/OfferContent";
 import Trust from "@/components/modules/Trust";
 import { TracingBeam } from "@/components/ui/tracing-beam";
 
@@ -18,6 +19,7 @@ export default function Home() {
                     <Hero />
                     <Trust />
                     <Offers />
+                    <OfferContent />
                     <FAQ />
                     <Contact />
                 </main>

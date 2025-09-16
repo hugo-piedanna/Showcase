@@ -1,7 +1,6 @@
 import Footer from "@/components/common/Footer";
 import Header from "@/components/common/Header";
 import { Legals, Section } from "@/components/common/legals/Legal";
-import { TracingBeam } from "@/components/ui/tracing-beam";
 
 export default function TOS() {
     const infos: Section[] = [
@@ -40,7 +39,7 @@ export default function TOS() {
             content: [
                 {
                     type: "paragraph",
-                    text: "Le site peut contenir des liens vers des services tiers (ex : Calendly, LinkedIn).",
+                    text: "Le site peut contenir des liens vers des services tiers (ex : Calendly, LinkedIn, Stripe).",
                 },
                 {
                     type: "paragraph",
