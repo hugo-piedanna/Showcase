@@ -80,6 +80,15 @@ export default function RootLayout({
                     content={metadata.description!}
                 />
 
+                <meta
+                    name="keywords"
+                    content={Array.isArray(metadata.keywords) ? metadata.keywords.join(", ") : metadata.keywords || ""}
+                />
+                <meta
+                    name="robots"
+                    content="index, follow"
+                />
+
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{
