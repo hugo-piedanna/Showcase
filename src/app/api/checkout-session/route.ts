@@ -8,10 +8,20 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const session_id = searchParams.get("session_id");
+  const clientIp = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown';
 
-  if (!session_id) {
-    return NextResponse.json({ error: "Missing session_id" }, { status: 400 });
+  // Validation stricte du session_id (format Stripe)
+  if (!session_id || !session_id.startsWith('cs_')) {
+    console.warn(`[SECURITY] Invalid session_id format in checkout-session from IP ${clientIp}`);
+    return NextResponse.json({ error: "Missing or invalid session_id" }, { status: 400 });
   }
+
+  if (session_id.length < 20 || session_id.length > 200) {
+    console.warn(`[SECURITY] Suspicious session_id length in checkout-session from IP ${clientIp}`);
+    return NextResponse.json({ error: "Invalid session_id" }, { status: 400 });
+  }
+
+  console.log(`[INFO] Checkout session request for ${session_id} from IP ${clientIp}`);
 
   try {
     // Récupérer la session + items + détails client
@@ -50,6 +60,7 @@ export async function GET(req: Request) {
       price: session.amount_total,
     });
   } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    console.error(`[ERROR] Checkout session API error from IP ${clientIp}:`, err.message);
+    return NextResponse.json({ error: "An error occurred" }, { status: 500 });
   }
 }

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { Client } from "minio";
 import Stripe from "stripe";
+import '../../lib/env-validator';
 const sanitize = (await import("sanitize-filename")).default;
 
 const MINIO_ENDPOINT = process.env.MINIO_ENDPOINT!;
@@ -39,11 +40,18 @@ export async function GET(req: Request) {
 
   const { searchParams } = new URL(req.url);
   const session_id = searchParams.get("session_id");
+  const clientIp = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown';
 
-  console.log(PRESIGNED_EXPIRY_SEC, process.env.PRESIGNED_EXPIRY_SEC)
-  
-  if (!session_id) {
-    return NextResponse.json({ error: "Missing session_id" }, { status: 400 });
+  // Validation stricte du session_id (format Stripe)
+  if (!session_id || !session_id.startsWith('cs_')) {
+    console.warn(`[SECURITY] Invalid session_id format from IP ${clientIp}`);
+    return NextResponse.json({ error: "Missing or invalid session_id" }, { status: 400 });
+  }
+
+  // Validation de la longueur (Stripe session IDs sont généralement longs)
+  if (session_id.length < 20 || session_id.length > 200) {
+    console.warn(`[SECURITY] Suspicious session_id length from IP ${clientIp}`);
+    return NextResponse.json({ error: "Invalid session_id" }, { status: 400 });
   }
   
   try {
@@ -51,16 +59,29 @@ export async function GET(req: Request) {
     const session = await stripe.checkout.sessions.retrieve(session_id);
 
     if( session == null || session.payment_status !== "paid") {
+      console.warn(`[SECURITY] Unpaid or invalid session attempt from IP ${clientIp}, session: ${session_id}`);
       return NextResponse.json({ error: "Invalid session or payment not completed" }, { status: 400 });
     }
   
     const filename = sanitize(FILE_NAME);
-    if (!filename) return NextResponse.json({ error: "invalid filename" }, { status: 400 });
+    if (!filename) {
+      console.error(`[SECURITY] Invalid filename after sanitization: ${FILE_NAME}`);
+      return NextResponse.json({ error: "invalid filename" }, { status: 400 });
+    }
 
+    console.log(`[INFO] Generating download URL for session ${session_id} from IP ${clientIp}`);
     const url = await presignedGetObject(MINIO_BUCKET, filename, PRESIGNED_EXPIRY_SEC);
+    
+    // Vérifier que l'URL générée pointe bien vers MinIO légitime
+    if (!url.includes(MINIO_ENDPOINT)) {
+      console.error(`[SECURITY CRITICAL] Generated URL does not match expected endpoint! URL: ${url}`);
+      return NextResponse.json({ error: "Configuration error" }, { status: 500 });
+    }
+    
     return NextResponse.json({ url });
       
     } catch (err: any) {
-      return NextResponse.json({ error: err.message }, { status: 500 });
+      console.error(`[ERROR] Download API error from IP ${clientIp}:`, err.message);
+      return NextResponse.json({ error: "An error occurred" }, { status: 500 });
     }
 }
