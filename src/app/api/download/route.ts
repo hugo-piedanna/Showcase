@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { Client } from "minio";
 import Stripe from "stripe";
-import '../../lib/env-validator';
 const sanitize = (await import("sanitize-filename")).default;
 
 const MINIO_ENDPOINT = process.env.MINIO_ENDPOINT!;
