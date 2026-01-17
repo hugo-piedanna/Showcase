@@ -17,7 +17,7 @@ export default function FAQ() {
         },
         {
             question: "Proposez-vous un paiement échelonné ?",
-            answer: "Oui, paiement en 3 fois sans frais pour tout projet supérieur à 2000€ : 30% à la signature, 40% à mi-projet, 30% à la livraison. Cette facilité de paiement rend la création de site web accessible à tous les budgets.",
+            answer: "Oui, paiement en 2 fois sans frais pour tout projet supérieur à 2000€ : 40% à la signature, 60% à la livraison. Cette facilité de paiement rend la création de site web accessible à tous les budgets.",
         },
         {
             question: "Est-ce que je pourrai modifier mon site moi-même ?",
@@ -32,20 +32,22 @@ export default function FAQ() {
     return (
         <section
             id="faq"
-            className="p-20">
+            className="py-20">
             <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 className="text-4xl font-bold text-center mb-4">
+                <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4">
                     Questions <span className="gradient">Fréquentes</span>
                 </h2>
-                <p className="text-center text-gray-400 mb-12">Tout ce que vous devez savoir sur mes services</p>
+                <p className="text-center text-gray-400 mb-12 text-base sm:text-lg">
+                    Tout ce que vous devez savoir sur mes services
+                </p>
 
-                <div className="flex flex-col gap-6">
+                <div className="flex flex-col gap-4 sm:gap-6">
                     {questions.map((question, index) => (
                         <Card
-                            className="p-6"
+                            className="p-4 sm:p-6"
                             key={index}>
-                            <h3 className="font-bold mb-2">{question.question}</h3>
-                            <p className="text-gray-400 text-sm">{question.answer}</p>
+                            <h3 className="font-bold mb-2 text-base sm:text-lg">{question.question}</h3>
+                            <p className="text-gray-400 text-sm sm:text-base">{question.answer}</p>
                         </Card>
                     ))}
                 </div>

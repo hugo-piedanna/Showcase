@@ -1,22 +1,27 @@
+"use client";
+
+import { Dot } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
 export default function Footer() {
     return (
         <React.Fragment>
-            <section className="border-t w-full py-4 bg-background">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex flex-row justify-between gap-8">
-                        <div className="flex flex-col justify-center">
-                            <h3 className="font-bold mb-4 gradient">Hugo Piedanna</h3>
-                            <p className="text-sm text-gray-400">
-                                <strong>Développeur web freelance</strong> basé à Toulouse. <br />
-                                Création de sites professionnels pour TPE et PME.
-                            </p>
+            <section className="border-t w-full py-6 sm:py-8 bg-background">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="flex flex-col sm:flex-row justify-between gap-6 sm:gap-8">
+                        <div className="flex flex-col justify-center text-center sm:text-left">
+                            <h3 className="text-lg sm:text-base font-bold mb-3 sm:mb-4 gradient">Hugo Piedanna</h3>
+                            <div className="text-xs sm:text-sm text-gray-400">
+                                <p>
+                                    <strong>Développeur web freelance</strong> basé à Toulouse.
+                                </p>
+                                <p>Création de sites professionnels pour TPE et PME.</p>
+                            </div>
                         </div>
-                        <div>
-                            <h4 className="font-semibold mb-4">Légal</h4>
-                            <ul className="space-y-2 text-sm text-gray-400">
+                        <div className="text-center sm:text-left">
+                            <h4 className="hidden sm:block text-base font-semibold mb-4">Légal</h4>
+                            <ul className="flex flex-row items-center sm:items-start gap-3 sm:flex-col sm:space-y-2 sm:gap-0 text-xs sm:text-sm text-gray-400 justify-center sm:justify-start">
                                 <li>
                                     <Link
                                         href="/CGU"
@@ -24,6 +29,10 @@ export default function Footer() {
                                         CGU
                                     </Link>
                                 </li>
+                                <Dot
+                                    size={"lg"}
+                                    className="inline-block sm:hidden w-5 h-5 text-gray-400"
+                                />
                                 <li>
                                     <Link
                                         href="/privacyPolicy"
@@ -31,6 +40,10 @@ export default function Footer() {
                                         Confidentialité
                                     </Link>
                                 </li>
+                                <Dot
+                                    size={"lg"}
+                                    className="inline-block sm:hidden w-5 h-5 text-gray-400"
+                                />
                                 <li>
                                     <Link
                                         href="/CGV"
@@ -43,13 +56,15 @@ export default function Footer() {
                     </div>
                 </div>
             </section>
-            <section className="border-t w-full py-4 bg-background">
-                <div className="w-full container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex flex-row justify-between gap-8">
-                        <p className="text-sm text-gray-400 items-center">
+            <section className="border-t w-full py-4 sm:py-6 bg-background">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-8">
+                        <p
+                            className="text-xs sm:text-sm text-gray-400 text-center sm:text-left"
+                            suppressHydrationWarning>
                             © {new Date().getFullYear()} Hugo Piedanna - Développeur web freelance • Fait avec ❤️
                         </p>
-                        <div className="flex gap-4">
+                        <div className="flex gap-3 sm:gap-4">
                             <Link
                                 href="https://www.linkedin.com/in/hugo-piedanna-a80570246/"
                                 aria-label="linkedin"

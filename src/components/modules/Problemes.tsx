@@ -1,18 +1,19 @@
+"use client";
+
 import { Card } from "@/components/ui/card";
 
 export default function Problemes() {
     return (
-        <section className="p-20">
-            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 ">
+        <section className="py-20">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 className="text-4xl font-bold text-center mb-4">
                     Pourquoi Faire Appel à un <span className="gradient">Développeur Web Freelance</span> ?
                 </h2>
                 <p className="text-center text-gray-400 mb-12 text-lg px-4">
                     Créer un <strong>site internet professionnel</strong> peut vite devenir un casse-tête : agences web
-                    hors de prix, prestataires peu réactifs, résultats décevants.
-                    <br />
-                    En tant que <strong>développeur freelance indépendant</strong>, je vous offre une alternative
-                    efficace et abordable.
+                    hors de prix, prestataires peu réactifs, résultats décevants. En tant que{" "}
+                    <strong>développeur freelance indépendant</strong>, je vous offre une alternative efficace et
+                    abordable.
                 </p>
 
                 <div className="grid md:grid-cols-2 gap-6">
@@ -29,10 +30,12 @@ export default function Problemes() {
                         <h3 className="text-xl font-semibold mb-3">
                             Vous n'avez pas encore de site et perdez des clients
                         </h3>
-                        <p className="text-gray-400">
+                        <p
+                            className="text-gray-400"
+                            suppressHydrationWarning>
                             Sans <strong>présence en ligne professionnelle</strong>, vos concurrents captent les clients
-                            à votre place. En 2024, ne pas avoir de <strong>site web</strong> revient à ne pas exister
-                            pour 80% des prospects.
+                            à votre place. En {new Date().getFullYear()}, ne pas avoir de <strong>site web</strong>{" "}
+                            revient à ne pas exister pour 80% des prospects.
                         </p>
                     </Card>
 
@@ -41,9 +44,9 @@ export default function Problemes() {
                             Vous avez déjà payé cher pour un résultat décevant
                         </h3>
                         <p className="text-gray-400">
-                            Les <strong>agences web</strong> facturent 5000-10000€ pour des sites qui ne vous
-                            appartiennent pas vraiment. Communication difficile, délais non respectés, dépendance totale
-                            : vous méritez mieux.
+                            Les <strong>agences web</strong> facturent cher pour des sites qui ne vous appartiennent pas
+                            vraiment. Communication difficile, délais non respectés, dépendance totale : vous méritez
+                            mieux.
                         </p>
                     </Card>
 
