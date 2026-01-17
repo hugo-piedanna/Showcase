@@ -1,4 +1,4 @@
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../ui/accordion";
+import { Card } from "@/components/ui/card";
 
 interface Questions {
     question: string;
@@ -8,47 +8,48 @@ interface Questions {
 export default function FAQ() {
     const questions: Questions[] = [
         {
-            question: "Et si ça ne marche pas ?",
-            answer: "C’est ta plus grande peur. Justement, tu ne payes pas seulement pour un site ou une méthode : tu payes pour comprendre.<br /> Tu appliques les bases, tu vois les résultats, tu progresses. L’objectif : que tu sois autonome et jamais bloqué.",
+            question: "Combien coûte la création d'un site web par un développeur freelance ?",
+            answer: "Le prix d'un site web varie selon la complexité : un site vitrine coûte environ 1500€, un site e-commerce entre 2500€ et 8000€, et une application web sur-mesure à partir de 5000€. Ces tarifs incluent le design, le développement, l'espace administrateur et la formation.",
         },
         {
-            question: "Vais-je devoir repayer pour chaque modification ?",
-            answer: "Non. Mon but est exactement l’inverse. Tu sauras modifier ton site toi-même, changer tes textes, améliorer ton SEO. Tu gardes le contrôle.",
+            question: "Combien de temps pour avoir mon site en ligne ?",
+            answer: "Entre 3 et 6 semaines selon la complexité du projet et votre réactivité pour fournir les contenus (textes, images). Un site vitrine : ~3 semaines. Un e-commerce : ~4-6 semaines.",
         },
         {
-            question: "Je débute totalement, est-ce que c’est pour moi ?",
-            answer: "Oui. Tout est pensé pour les indépendants qui n’ont aucune base technique. Tu n’as pas besoin de “parler geek” pour appliquer.",
+            question: "Proposez-vous un paiement échelonné ?",
+            answer: "Oui, paiement en 3 fois sans frais pour tout projet supérieur à 2000€ : 30% à la signature, 40% à mi-projet, 30% à la livraison. Cette facilité de paiement rend la création de site web accessible à tous les budgets.",
         },
         {
-            question: "Combien de temps ça prend ?",
-            answer: "Chaque formation se lit et se met en pratique en moins d’une heure. Tu peux avancer pas à pas, sans pression, et voir des résultats rapidement.",
+            question: "Est-ce que je pourrai modifier mon site moi-même ?",
+            answer: "Oui ! Je vous forme à l'utilisation d'un CMS intuitif. Vous pourrez modifier textes, images, modifier vos informations. Pour des modifications plus complexes, je reste disponible.",
+        },
+        {
+            question: "Travaillez-vous avec des clients hors de Toulouse ?",
+            answer: "Absolument ! 80% de mes échanges se font en visio. Que vous soyez à Paris, Lyon, Marseille ou ailleurs en France, on travaille ensemble sans problème. Basé à Toulouse, j'interviens partout en France.",
         },
     ];
 
     return (
         <section
-            className="container px-6 w-full mx-auto mt-20 gap-5 flex flex-col"
-            id="faq">
-            <h2 className="text-3xl lg:text-4xl font-medium text-center">{"Les questions que tu te poses déjà"}</h2>
+            id="faq"
+            className="p-20">
+            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 className="text-4xl font-bold text-center mb-4">
+                    Questions <span className="gradient">Fréquentes</span>
+                </h2>
+                <p className="text-center text-gray-400 mb-12">Tout ce que vous devez savoir sur mes services</p>
 
-            <Accordion
-                type="single"
-                collapsible
-                className="w-full">
-                {questions.map((item, index) => (
-                    <AccordionItem
-                        key={index}
-                        value={`item-${index + 1}`}>
-                        <AccordionTrigger>{item.question}</AccordionTrigger>
-                        <AccordionContent>
-                            <div
-                                className="text-muted-foreground"
-                                dangerouslySetInnerHTML={{ __html: item.answer }}
-                            />
-                        </AccordionContent>
-                    </AccordionItem>
-                ))}
-            </Accordion>
+                <div className="flex flex-col gap-6">
+                    {questions.map((question, index) => (
+                        <Card
+                            className="p-6"
+                            key={index}>
+                            <h3 className="font-bold mb-2">{question.question}</h3>
+                            <p className="text-gray-400 text-sm">{question.answer}</p>
+                        </Card>
+                    ))}
+                </div>
+            </div>
         </section>
     );
 }

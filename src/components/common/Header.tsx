@@ -12,8 +12,8 @@ interface items {
 }
 
 const itemsButtons: items[] = [
-    { libelle: "Accueil", id: "home" },
-    { libelle: "Mes offres", id: "offers" },
+    { libelle: "Services", id: "services" },
+    { libelle: "Réalisations", id: "realisations" },
     { libelle: "FAQ", id: "faq" },
     { libelle: "Contact", id: "contact" },
 ];
@@ -37,7 +37,7 @@ export default function Header() {
     }
 
     return (
-        <section className="border-b py-4 bg-background fixed top-0 left-0 w-full z-50">
+        <section className="border-b py-4 bg-card fixed top-0 left-0 w-full z-50">
             <nav className="container px-6 mx-auto flex justify-between items-center">
                 <Link href={"/"}>
                     <h2 className="text-3xl font-bold inline-block gradient">
@@ -52,44 +52,20 @@ export default function Header() {
                         {itemsButtons.map((item, index) => (
                             <li
                                 key={index}
-                                className="text-muted-foreground cursor-pointer hover:text-primary transition-colors duration-300"
+                                className="cursor-pointer hover:text-primary transition-colors duration-300"
                                 onClick={() => scrollToSection(item.id)}>
                                 {item.libelle}
                             </li>
                         ))}
                     </ul>
-                    <Sheet
-                        open={isSheetOpen}
-                        onOpenChange={setIsSheetOpen}>
-                        <SheetTrigger
-                            asChild
-                            className="xl:hidden">
-                            <Button
-                                aria-label="Menu déroulant"
-                                variant="outline"
-                                size="icon">
-                                <IconMenu2 size={18} />
-                            </Button>
-                        </SheetTrigger>
-                        <SheetContent side="left">
-                            <SheetHeader>
-                                <SheetTitle>{"Hugo Piedanna"}</SheetTitle>
-                                <SheetDescription>{"Développeur web full-stack"}</SheetDescription>
-                            </SheetHeader>
-                            <div className="flex flex-col gap-2 mt-4">
-                                {itemsButtons.map((item, index) => (
-                                    <Button
-                                        key={index}
-                                        variant="ghost"
-                                        className="justify-start"
-                                        onClick={() => scrollToSection(item.id)}>
-                                        {item.libelle}
-                                    </Button>
-                                ))}
-                            </div>
-                        </SheetContent>
-                    </Sheet>
                 </div>
+
+                <Button
+                    className="duration-300 transition-colors"
+                    size={"lg"}
+                    onClick={() => scrollToSection("contact")}>
+                    Démarrer mon projet
+                </Button>
             </nav>
         </section>
     );

@@ -26,24 +26,26 @@ export default function Trust() {
     }, []);
 
     return (
-        <section className="container px-6 w-full mx-auto mt-20 gap-5 flex flex-col">
-            <div className="grid lg:grid-cols-3 divide-y-2 lg:divide-x-2 lg:divide-y-0 lg:w-full divide-dashed divide-accent">
-                <div className="flex flex-col items-center justify-center gap-4 p-3">
-                    <span className="text-3xl lg:text-4xl font-bold">Projets</span>
-                    <p className="text-2xl lg:text-3xl">+{projects}</p>
-                    <span className="text-muted-foreground text-sm">en freelance</span>
+        <div className="bg-linear-to-b from-transparent to-violet-500/5">
+            <section className="container px-6 w-full mx-auto p-20 gap-5 flex flex-col ">
+                <div className="grid lg:grid-cols-3 divide-y-2 lg:divide-x-2 lg:divide-y-0 lg:w-full divide-dashed divide-accent">
+                    <div className="flex flex-col items-center justify-center gap-4 p-3">
+                        <span className="text-3xl lg:text-4xl font-bold">Projets</span>
+                        <p className="text-2xl lg:text-3xl">+{projects}</p>
+                        <span className="text-muted-foreground text-sm">en freelance</span>
+                    </div>
+                    <div className="flex flex-col items-center justify-center gap-4 p-3">
+                        <span className="text-3xl lg:text-4xl font-bold">Expériences</span>
+                        <p className="text-2xl lg:text-3xl">+{experiences} ans</p>
+                        <span className="text-muted-foreground text-sm">en développement web en entreprise</span>
+                    </div>
+                    <div className="flex flex-col items-center justify-center gap-4 p-3">
+                        <span className="text-3xl lg:text-4xl font-bold">Utilisateurs</span>
+                        <p className="text-2xl lg:text-3xl">+{clients}</p>
+                        <span className="text-muted-foreground text-sm">en freelance</span>
+                    </div>
                 </div>
-                <div className="flex flex-col items-center justify-center gap-4 p-3">
-                    <span className="text-3xl lg:text-4xl font-bold">Expériences</span>
-                    <p className="text-2xl lg:text-3xl">+{experiences} ans</p>
-                    <span className="text-muted-foreground text-sm">en développement web en entreprise</span>
-                </div>
-                <div className="flex flex-col items-center justify-center gap-4 p-3">
-                    <span className="text-3xl lg:text-4xl font-bold">Utilisateurs</span>
-                    <p className="text-2xl lg:text-3xl">+{clients}</p>
-                    <span className="text-muted-foreground text-sm">en freelance</span>
-                </div>
-            </div>
-        </section>
+            </section>
+        </div>
     );
 }

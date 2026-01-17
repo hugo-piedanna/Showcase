@@ -41,12 +41,12 @@ export default function ThanksContent() {
 
     return (
         <div className="container w-full px-6 mx-auto relative">
-            <div className="w-[500px] lg:w-[700px] h-[350px] bg-gradient-to-tr z-10 from-violet-500 to-rose-500 rounded-[100%] absolute top-[50%] left-[25%] opacity-50 translate-x-[-50%] lg:translate-x-[-70%] translate-y-[-70%] blur-[100px]"></div>
+            <div className="w-125 lg:w-175 h-87.5 bg-linear-to-tr z-10 from-violet-500 to-rose-500 rounded-[100%] absolute top-[50%] left-[25%] opacity-50 translate-x-[-50%] lg:translate-x-[-70%] translate-y-[-70%] blur-[100px]"></div>
 
             {data ? (
                 <div className="flex flex-col h-full justify-center z-20 gap-8 pt-[15vh]">
                     <div className="flex flex-col lg:col-span-2 gap-5 h-full justify-center z-20">
-                        <h1 className="text-3xl lg:text-5xl font-bold leading-[2.3rem] lg:leading-[3.5rem] hidden sm:inline-flex">
+                        <h1 className="text-3xl lg:text-5xl font-bold leading-[2.3rem] lg:leading-14 hidden sm:inline-flex">
                             Merci {data.firstName}, pour ta commande !
                         </h1>
                         <p className="text-md lg:text-lg">

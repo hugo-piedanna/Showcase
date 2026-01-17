@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import illustration from "@/assets/illustration.webp";
+import illustration from "@/assets/Illustration.webp";
 
 export default function Home() {
     function scrollToSection(section: string) {
@@ -17,53 +17,100 @@ export default function Home() {
     }
 
     return (
-        <div
-            className="container w-full px-6 mx-auto relative"
-            id="home">
-            <div className="w-[500px] lg:w-[700px] h-[350px] bg-gradient-to-tr z-10 from-violet-500 to-rose-500 rounded-[100%] absolute top-[50%] left-[25%] opacity-50 translate-x-[-50%] lg:translate-x-[-70%] translate-y-[-70%] blur-[100px]"></div>
-            <div className="grid xl:grid-cols-3 gap-8 pt-[15vh]">
-                <div className="flex flex-col lg:col-span-2 gap-5 h-full justify-center z-20">
-                    <h1 className="text-3xl lg:text-5xl font-bold leading-[2.3rem] lg:leading-[3.5rem] inline-flex sm:hidden">
-                        Ton site ne sert à rien ? <br />
-                        Changeons ça
-                    </h1>
-                    <h1 className="text-3xl lg:text-5xl font-bold leading-[2.3rem] lg:leading-[3.5rem] hidden sm:inline-flex">
-                        Ton site ne sert à rien ? <br />
-                        Transformons-le en machine à clients
-                    </h1>
-                    <p className="text-md lg:text-lg">
-                        Aujourd’hui ton site existe… mais il dort. Tu as quelques visites, parfois aucune, et les rares
-                        visiteurs repartent aussitôt. Tu passes des heures à écrire des posts ou à réfléchir à tes
-                        mots-clés, mais rien ne bouge. <br />
-                        Je t’aide pas à pas à le rendre incontournable.
-                    </p>
-                    <div className="flex items-center flex-wrap gap-3 lg:gap-4">
-                        <Button
-                            className="duration-300 transition-colors"
-                            size="lg"
-                            onClick={() => scrollToSection("offers")}>
-                            <span className="text-center">{"Découvre mes offres"}</span>
-                        </Button>
-                        <Button
-                            className="duration-300 transition-colors"
-                            size="lg"
-                            variant="outline"
-                            onClick={() => scrollToSection("contact")}>
-                            <span className="text-center">{"Contacte moi"}</span>
-                        </Button>
+        <section className="pt-32">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div className="mt-2 inline-flex items-center gap-2 px-3 py-1 bg-violet-500/10 border border-violet-500/20 rounded-full">
+                            <span className="w-2 h-2 bg-violet-400 rounded-full animate-pulse"></span>
+                            <span className="text-sm text-violet-400">Disponible pour nouveaux projets</span>
+                        </div>
+                        <h1 className="text-xl md:text-6xl font-bold mb-6 leading-tight">
+                            Développeur Web Freelance à <span className="gradient">Toulouse</span>
+                        </h1>
+                        <p className="text-xl text-gray-400 mb-8">
+                            Expert en <strong>développement web</strong> et <strong>création de sites internet</strong>,
+                            je transforme vos projets en <strong>sites professionnels performants</strong>. Sites
+                            vitrine, e-commerce, applications web : des solutions digitales adaptées aux TPE, PME et
+                            entrepreneurs.
+                        </p>
+                        <p className="text-gray-400 mb-8">
+                            Vous cherchez un <strong>développeur web freelance</strong> pour{" "}
+                            <strong>créer votre site internet</strong> ? Je conçois des{" "}
+                            <strong>sites web sur-mesure</strong>, modernes et optimisés pour le référencement naturel.
+                            Basé à <strong>Bordeaux</strong>, j'interviens partout en France pour vos projets de{" "}
+                            <strong>création site vitrine</strong>, <strong>boutique en ligne</strong> ou{" "}
+                            <strong>développement d'application web</strong>.
+                        </p>
+
+                        <div className="flex flex-wrap gap-4 mb-8">
+                            <div className="flex items-center gap-2">
+                                <svg
+                                    className="w-5 h-5 text-green-400"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20">
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                                <span className="text-sm">Livraison en 3 semaines</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <svg
+                                    className="w-5 h-5 text-green-400"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20">
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                                <span className="text-sm">Design moderne et responsive</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <svg
+                                    className="w-5 h-5 text-green-400"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20">
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                                <span className="text-sm">Formation incluse</span>
+                            </div>
+                        </div>
+
+                        <div className="flex gap-4">
+                            <Button
+                                className="duration-300 transition-colors"
+                                size={"lg"}
+                                onClick={() => scrollToSection("contact")}>
+                                Discutons de votre projet
+                            </Button>
+                            <Button
+                                className="duration-300 transition-colors"
+                                size={"lg"}
+                                variant="outline"
+                                onClick={() => scrollToSection("realisations")}>
+                                Voir mes réalisations
+                            </Button>
+                        </div>
                     </div>
-                </div>
-                <div className="hidden xl:flex flex-col">
+
                     <Image
                         src={illustration}
-                        alt="Freelance aidant un entrepreneur à créer un site web optimisé en SEO, design et copywriting"
-                        className="rounded-xl"
-                        style={{ objectFit: "cover" }}
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+                        alt="Illustration Développeur Web Freelance"
+                        className="w-full h-auto rounded-lg shadow-lg hidden md:block"
+                        fetchPriority="high"
                         priority
                     />
                 </div>
             </div>
-        </div>
+        </section>
     );
 }

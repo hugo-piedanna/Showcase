@@ -1,16 +1,12 @@
-import { Check } from "lucide-react";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 
 interface offer {
     title: string;
     description: string;
-    scalable?: boolean;
     price: number;
     details: string[];
-    ps?: string;
-    bref: string;
+    ideals: string[];
     cta: string;
     link: string;
 }
@@ -18,86 +14,116 @@ interface offer {
 export default function Offers() {
     const offers: offer[] = [
         {
-            title: "Pack Formations",
-            price: 199,
+            title: "Site Vitrine Professionnel",
+            price: 1500,
             description:
-                "Ton site existe déjà, mais il ne décolle pas ?<br /> Ce pack est fait pour toi si tu veux enfin comprendre comment rendre ton site visible et convaincant.",
+                "Vous êtes <strong>artisan</strong>, <strong>consultant</strong> ou <strong>profession libérale</strong> et cherchez à créer un <strong>site vitrine</strong> qui reflète votre professionnalisme ? Je développe des <strong>sites internet vitrines</strong> modernes, rapides et optimisés pour attirer vos futurs clients.",
             details: [
-                "Formation SEO → Apprends à trouver les bons mots-clés et à te placer sur Google.",
-                "Formation Copywriting → Savoir écrire des textes qui accrochent et qui vendent.",
-                "Formation UX/UI → Offrir une navigation claire et agréable qui garde tes visiteurs.",
+                "Optimisation SEO et performance",
+                "Design moderne et responsive",
+                "Accompagnement jusqu’à la mise en ligne",
+                "Formation à la gestion du site",
+                "Formulaire de contact",
+                "Espace d'administration simple",
             ],
-            bref: "En quelques heures, tu as les clés pour optimiser ton site vitrine et attirer tes premiers vrais clients.",
-            cta: "Je veux apprendre",
+            ideals: ["Artisans", "Consultants", "TPE", "Professions libérales"],
+            cta: "Lancer mon site vitrine",
             link: "https://buy.stripe.com/aFa14pejA5aLbOT2Lj4Ni01",
         },
         {
-            title: "Pack Site + Formations",
-            price: 980,
-            scalable: true,
+            title: "Application Web Sur-Mesure",
+            price: -1,
             description:
-                "Ton site est inexistant ou inutile ?<br /> Repars de zéro avec un site qui attire. Je crée pour toi un site vitrine professionnel, optimisé pour Google dès le lancement, avec un design clair et des textes pensés pour convertir.",
-            details: [
-                "Un site vitrine simple, pro et responsive*",
-                "Optimisation SEO incluse",
-                "Accompagnement jusqu’à la mise en ligne",
-                "Les 3 formations pour être totalement autonome",
-            ],
-            ps: "Selon vos besoins.",
-            bref: "Pas juste un site. Un site + la compétence pour le faire vivre.",
-            cta: "Je veux un site qui attire",
+                "Vous avez un projet d'<strong>application web</strong> spécifique ? Je développe des <strong>applications web</strong> complexes et performantes. Que ce soit un <strong>outil interne</strong>, une <strong>plateforme client</strong> ou un <strong>SaaS</strong>, je crée des solutions adaptées à vos besoins.",
+            details: [],
+            ideals: ["Startups", "SaaS", "Outils métier"],
+            cta: "Discuter de mon projet",
             link: "https://buy.stripe.com/14AbJ3b7o7iT2ejbhP4Ni00",
         },
     ];
 
+    function scrollToSection(section: string) {
+        const el = document.getElementById(section);
+        if (el) {
+            const topOffset = el.getBoundingClientRect().top + window.scrollY;
+            window.scrollTo({
+                top: topOffset - 100,
+                behavior: "smooth",
+            });
+        }
+    }
+
     return (
         <section
-            className="container px-6 w-full mx-auto mt-20"
-            id="offers">
+            className="p-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+            id="services">
             <div>
-                <h2 className="text-3xl lg:text-4xl font-medium text-center">{"Mes offres"}</h2>
-                <p className="text-muted-foreground text-center mt-4">Choisis l’offre qui correspond à ta situation.</p>
+                <h2 className="text-4xl font-bold text-center mb-4">
+                    Services de <span className="gradient">Développement Web</span>
+                </h2>
+                <p className="text-center text-gray-400 mb-12 text-lg">
+                    Des services adaptées à vops besoins et votre budget
+                </p>
             </div>
-            <div className="grid lg:grid-cols-2 gap-8 mt-10">
+            <div className="grid md:grid-cols-2 gap-8 items-start">
                 {offers.map((offer, index) => (
                     <Card
-                        className="lg:p-8 p-4 relative group"
+                        className="p-8"
                         key={index}>
-                        <CardTitle className="flex justify-between text-xl lg:text-2xl">
-                            <h3>{offer.title}</h3>
-                            <p className="font-light text-lg">
-                                {offer.scalable ? "À partir de" : ""}
-                                <span className="text-xl lg:text-2xl font-bold"> {offer.price} €</span>
-                                {" TTC"}
-                            </p>
+                        <CardTitle className="flex justify-between items-start mb-4">
+                            <h3 className="text-2xl font-bold">{offer.title}</h3>
+                            {offer.price === -1 ? (
+                                <div>
+                                    <span className="text-3xl font-bold gradient">Sur devis</span>
+                                </div>
+                            ) : (
+                                <div>
+                                    <span className="text-3xl font-bold gradient"> {offer.price}€</span>
+                                    <span className="text-gray-400"> TTC</span>
+                                </div>
+                            )}
                         </CardTitle>
 
-                        <CardDescription dangerouslySetInnerHTML={{ __html: offer.description }} />
-                        <div>
-                            <span className="text-md lg:text-lg font-semibold">Contenu :</span>
-                            <ul className="text-muted-foreground">
-                                {offer.details.map((detail, index) => (
-                                    <li key={index}>
-                                        <div className="flex items-center gap-2 text-sm">
-                                            <Check
-                                                className="inline mr-2 text-primary"
-                                                size={18}
-                                            />
-                                            <p>{detail}</p>
-                                        </div>
-                                    </li>
-                                ))}
-                            </ul>
-                            {offer.ps && <p className="text-sm text-muted-foreground mt-2">* {offer.ps}</p>}
-                        </div>
+                        <p className="text-gray-400">Idéal pour : {offer.ideals.join(", ")}</p>
+
+                        <CardDescription
+                            className="text-gray-300 mb-6"
+                            dangerouslySetInnerHTML={{ __html: offer.description }}
+                        />
+                        {offer.details.length > 0 && (
+                            <div>
+                                <ul className="space-y-2 mb-6">
+                                    {offer.details.map((detail, index) => (
+                                        <li
+                                            className="flex items-start gap-2"
+                                            key={index}>
+                                            <svg
+                                                className="w-5 h-5 text-primary mt-0.5"
+                                                fill="currentColor"
+                                                viewBox="0 0 20 20">
+                                                <path
+                                                    fillRule="evenodd"
+                                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                                    clipRule="evenodd"
+                                                />
+                                            </svg>
+                                            <p className="text-sm">{detail}</p>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
+
                         <div
-                            className="flex flex-col gap-6 mt-auto"
+                            className="flex flex-col gap-6"
                             id="offer-footer">
-                            <p className="text-muted-foreground text-sm mt-4">{offer.bref}</p>
                             <div className="mx-auto">
-                                <Link href={offer.link}>
-                                    <Button className="duration-300 transition-colors">{offer.cta}</Button>
-                                </Link>
+                                <Button
+                                    onClick={() => scrollToSection("contact")}
+                                    size={"lg"}
+                                    className="duration-300 transition-colors">
+                                    {offer.cta}
+                                </Button>
                             </div>
                         </div>
                     </Card>
