@@ -1,32 +1,96 @@
 import Footer from "@/components/common/Footer";
 import Header from "@/components/common/Header";
+import ScrollProgress from "@/components/common/ScrollProgress";
 import Contact from "@/components/modules/Contact";
-import FAQ from "@/components/modules/FAQ";
+import FAQComponent from "@/components/modules/FAQ";
 import Hero from "@/components/modules/Hero";
 import Offers from "@/components/modules/Offer";
-import OfferContent from "@/components/modules/OfferContent";
+import Problemes from "@/components/modules/Problemes";
+import Process from "@/components/modules/Process";
+import Projects from "@/components/modules/Projects";
+import Solutions from "@/components/modules/Solutions";
 import Trust from "@/components/modules/Trust";
-import { TracingBeam } from "@/components/ui/tracing-beam";
+import {
+    getFAQs,
+    getNavItems,
+    getProjects,
+    getOffers,
+    getTrustItems,
+    getProblemItems,
+    getSolutionItems,
+    getProcessSteps,
+    getStaticTexts,
+} from "@/lib/sanity.data";
 
-export default function Home() {
+export default async function Home() {
+    const [
+        faqs,
+        navItems,
+        projects,
+        offers,
+        trustItems,
+        problemItems,
+        solutionItems,
+        processSteps,
+        staticTexts,
+    ] = await Promise.all([
+        getFAQs(),
+        getNavItems(),
+        getProjects(),
+        getOffers(),
+        getTrustItems(),
+        getProblemItems(),
+        getSolutionItems(),
+        getProcessSteps(),
+        getStaticTexts(),
+    ]);
+
     return (
         <div className="w-full overflow-hidden">
-            <TracingBeam>
-                <header>
-                    <Header />
-                </header>
-                <main className="flex flex-col lg:gap-10">
-                    <Hero />
-                    <Trust />
-                    <Offers />
-                    <OfferContent />
-                    <FAQ />
-                    <Contact />
-                </main>
-                <footer>
-                    <Footer />
-                </footer>
-            </TracingBeam>
+            <header>
+                <ScrollProgress />
+                <Header
+                    navItems={navItems}
+                    staticTexts={staticTexts}
+                />
+            </header>
+            <main className="flex flex-col">
+                <Hero staticTexts={staticTexts} />
+                <Trust
+                    items={trustItems}
+                    staticTexts={staticTexts}
+                />
+                <Problemes
+                    items={problemItems}
+                    staticTexts={staticTexts}
+                />
+                <Solutions
+                    items={solutionItems}
+                    staticTexts={staticTexts}
+                />
+                <Offers
+                    offers={offers}
+                    staticTexts={staticTexts}
+                />
+                <Projects
+                    projects={projects}
+                    staticTexts={staticTexts}
+                />
+                <Process
+                    steps={processSteps}
+                    staticTexts={staticTexts}
+                />
+                <FAQComponent
+                    faqs={faqs}
+                    staticTexts={staticTexts}
+                />
+                <Contact
+                    staticTexts={staticTexts}
+                />
+            </main>
+            <footer>
+                <Footer staticTexts={staticTexts} />
+            </footer>
         </div>
     );
 }

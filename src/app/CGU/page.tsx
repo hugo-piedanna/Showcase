@@ -39,7 +39,7 @@ export default function TOS() {
             content: [
                 {
                     type: "paragraph",
-                    text: "Le site peut contenir des liens vers des services tiers (ex : Calendly, LinkedIn, Stripe).",
+                    text: "Le site peut contenir des liens vers des services tiers (ex : LinkedIn).",
                 },
                 {
                     type: "paragraph",
@@ -56,7 +56,7 @@ export default function TOS() {
                 },
                 {
                     type: "paragraph",
-                    text: "Cependant, certaines données peuvent être collectées par des services tiers intégrés (ex : Stripe pour les paiements, Calendly pour les prises de rendez-vous).",
+                    text: "Cependant, certaines données peuvent être collectées par des services tiers intégrés.",
                 },
                 {
                     type: "paragraph",
@@ -104,7 +104,7 @@ export default function TOS() {
             </header>
             <main className="flex flex-col items-center h-full w-full">
                 <span className="container px-6 w-full mx-auto mt-20 mb-15 pt-[10vh]">
-                    Dernière mise à jour : 05/08/2025
+                    Dernière mise à jour : 09/01/2026
                 </span>
                 <Legals
                     title="Conditions Générales d’Utilisation"

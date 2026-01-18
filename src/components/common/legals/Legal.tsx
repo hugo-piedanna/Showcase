@@ -3,7 +3,7 @@ import React from "react";
 export type Section = {
     title: string;
     content: {
-        type: "paragraph" | "list";
+        type: "paragraph" | "list" | "subtitle";
         text: string;
     }[];
 };
@@ -52,7 +52,7 @@ export function Legals({ title, sections }: LegalsProps) {
                                     {!content.text.includes("{e}") && !content.text.includes("{a}") && content.text}
                                 </li>
                             </ul>
-                        ) : (
+                        ) : content.type === "paragraph" ? (
                             <p
                                 key={contentIndex}
                                 className="mb-2 text-muted-foreground">
@@ -80,7 +80,13 @@ export function Legals({ title, sections }: LegalsProps) {
                                 )}
                                 {!content.text.includes("{e}") && !content.text.includes("{a}") && content.text}
                             </p>
-                        ),
+                        ) : content.type === "subtitle" ? (
+                            <h3
+                                key={contentIndex}
+                                className="text-xl font-semibold mb-2">
+                                {content.text}
+                            </h3>
+                        ) : null,
                     )}
                 </div>
             ))}
