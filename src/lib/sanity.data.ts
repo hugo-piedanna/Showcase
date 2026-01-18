@@ -83,6 +83,7 @@ export interface StaticTexts {
     heroCtaPrimary?: string;
     heroCtaSecondary?: string;
     heroAvailabilityText?: string;
+    heroImage?: string;
     
     // Trust
     trustProjectsLabel?: string;

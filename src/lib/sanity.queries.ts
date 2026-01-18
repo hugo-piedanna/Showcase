@@ -62,4 +62,7 @@ export const processStepsQuery = `*[_type == "processStep"] | order(order asc) {
     order
 }`;
 
-export const staticTextsQuery = `*[_type == "staticTexts"][0]`;
+export const staticTextsQuery = `*[_type == "staticTexts"][0] {
+    ...,
+    "heroImage": heroImage.asset->url
+}`;

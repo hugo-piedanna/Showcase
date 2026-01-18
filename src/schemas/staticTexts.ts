@@ -50,6 +50,15 @@ export default defineType({
       initialValue: 'Disponible pour nouveaux projets',
       group: 'hero',
     }),
+    defineField({
+      name: 'heroImage',
+      title: 'Hero - Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+      group: 'hero',
+    }),
 
     // === PROBLEMES SECTION ===
     defineField({

@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import illustration from "@/assets/Illustration.webp";
 import { StaticTexts } from "@/lib/sanity.data";
 
 interface HeroProps {
@@ -67,8 +66,10 @@ export default function Hero({ staticTexts }: HeroProps) {
                     </div>
 
                     <Image
-                        src={illustration}
+                        src={staticTexts?.heroImage || "/illustration.webp"}
                         alt="Illustration Développeur Web Freelance"
+                        width={800}
+                        height={600}
                         className="w-full h-auto rounded-lg shadow-lg hidden md:block"
                         fetchPriority="high"
                         priority
