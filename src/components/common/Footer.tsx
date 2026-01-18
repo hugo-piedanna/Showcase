@@ -40,10 +40,7 @@ export default function Footer({ staticTexts }: FooterProps) {
                                         {staticTexts?.footerCguLabel}
                                     </Link>
                                 </li>
-                                <Dot
-                                    size={"lg"}
-                                    className="inline-block sm:hidden w-5 h-5 text-gray-400"
-                                />
+                                <Dot className="inline-block sm:hidden w-5 h-5 text-gray-400" />
                                 <li>
                                     <Link
                                         href="/privacyPolicy"
@@ -51,10 +48,7 @@ export default function Footer({ staticTexts }: FooterProps) {
                                         {staticTexts?.footerPrivacyLabel}
                                     </Link>
                                 </li>
-                                <Dot
-                                    size={"lg"}
-                                    className="inline-block sm:hidden w-5 h-5 text-gray-400"
-                                />
+                                <Dot className="inline-block sm:hidden w-5 h-5 text-gray-400" />
                                 <li>
                                     <Link
                                         href="/CGV"

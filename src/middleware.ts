@@ -1,21 +1,5 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { validateEnvironmentVariables } from './lib/env-validator';
-
-// Valider les variables d'env au premier import (en production seulement)
-if (process.env.NODE_ENV === 'production') {
-  const errors = validateEnvironmentVariables();
-  if (errors.length > 0) {
-    console.error('❌ ERREURS DE VALIDATION DÉTECTÉES:\n');
-    errors.forEach((error) => {
-      console.error(`   • ${error.var}: ${error.issue}`);
-      if (error.value) {
-        console.error(`     Valeur suspecte: ${error.value}`);
-      }
-    });
-    throw new Error('Validation des variables d\'environnement échouée - Application bloquée');
-  }
-}
 
 // Rate limiting simple (en production, utilisez Redis ou similar)
 const rateLimit = new Map<string, { count: number; resetTime: number }>();
