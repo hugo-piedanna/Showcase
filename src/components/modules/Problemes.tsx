@@ -1,63 +1,49 @@
 "use client";
 
 import { Card } from "@/components/ui/card";
+import { ProblemItem, StaticTexts } from "@/lib/sanity.data";
 
-export default function Problemes() {
+interface ProblemesProps {
+    items?: ProblemItem[];
+    staticTexts?: StaticTexts | null;
+}
+
+export default function Problemes({ items, staticTexts }: ProblemesProps) {
+    const title =
+        staticTexts?.problemesTitle ||
+        "Pourquoi Faire Appel à un <span class='gradient'>Développeur Web Freelance</span> ?";
+    const description =
+        staticTexts?.problemesDescription ||
+        "Créer un <strong>site internet professionnel</strong> peut vite devenir un casse-tête : agences web hors de prix, prestataires peu réactifs, résultats décevants. En tant que <strong>développeur freelance indépendant</strong>, je vous offre une alternative efficace et abordable.";
+
+    if (!items || items.length === 0) {
+        return null;
+    }
+
     return (
         <section className="py-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 className="text-4xl font-bold text-center mb-4">
-                    Pourquoi Faire Appel à un <span className="gradient">Développeur Web Freelance</span> ?
-                </h2>
-                <p className="text-center text-gray-400 mb-12 text-lg px-4">
-                    Créer un <strong>site internet professionnel</strong> peut vite devenir un casse-tête : agences web
-                    hors de prix, prestataires peu réactifs, résultats décevants. En tant que{" "}
-                    <strong>développeur freelance indépendant</strong>, je vous offre une alternative efficace et
-                    abordable.
-                </p>
+                <h2
+                    className="text-4xl font-bold text-center mb-4"
+                    dangerouslySetInnerHTML={{ __html: staticTexts?.problemesTitle || "" }}
+                />
+                <p
+                    className="text-center text-gray-400 mb-12 text-base sm:text-lg max-w-3xl mx-auto"
+                    dangerouslySetInnerHTML={{ __html: staticTexts?.problemesDescription || "" }}
+                />
 
                 <div className="grid md:grid-cols-2 gap-6">
-                    <Card className="p-6">
-                        <h3 className="text-xl font-semibold mb-3">Votre site web actuel ne génère aucun contact</h3>
-                        <p className="text-gray-400">
-                            Vous avez un <strong>site internet</strong>, mais il ne convertit pas vos visiteurs en
-                            clients. Design daté, contenu peu engageant, temps de chargement trop long : autant de
-                            raisons qui font fuir vos prospects.
-                        </p>
-                    </Card>
-
-                    <Card className="p-6">
-                        <h3 className="text-xl font-semibold mb-3">
-                            Vous n'avez pas encore de site et perdez des clients
-                        </h3>
-                        <p
-                            className="text-gray-400"
-                            suppressHydrationWarning>
-                            Sans <strong>présence en ligne professionnelle</strong>, vos concurrents captent les clients
-                            à votre place. En {new Date().getFullYear()}, ne pas avoir de <strong>site web</strong>{" "}
-                            revient à ne pas exister pour 80% des prospects.
-                        </p>
-                    </Card>
-
-                    <Card className="p-6">
-                        <h3 className="text-xl font-semibold mb-3">
-                            Vous avez déjà payé cher pour un résultat décevant
-                        </h3>
-                        <p className="text-gray-400">
-                            Les <strong>agences web</strong> facturent cher pour des sites qui ne vous appartiennent pas
-                            vraiment. Communication difficile, délais non respectés, dépendance totale : vous méritez
-                            mieux.
-                        </p>
-                    </Card>
-
-                    <Card className="p-6">
-                        <h3 className="text-xl font-semibold mb-3">Vous ne savez pas comment créer un site internet</h3>
-                        <p className="text-gray-400">
-                            Entre les CMS, le <strong>développement web</strong>, l'hébergement, le SEO : créer un{" "}
-                            <strong>site professionnel</strong> nécessite des compétences que vous n'avez pas. Et c'est
-                            normal, c'est mon métier.
-                        </p>
-                    </Card>
+                    {items.map((item) => (
+                        <Card
+                            className="p-6"
+                            key={item._id}>
+                            <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
+                            <p
+                                className="text-gray-400"
+                                dangerouslySetInnerHTML={{ __html: item.description }}
+                            />
+                        </Card>
+                    ))}
                 </div>
             </div>
         </section>

@@ -1,34 +1,14 @@
-import { Button } from "@/components/ui/button";
+"use client";
 
-interface Step {
-    title: string;
-    description: string;
+import { Button } from "@/components/ui/button";
+import { ProcessStep, StaticTexts } from "@/lib/sanity.data";
+
+interface ProcessProps {
+    steps?: ProcessStep[];
+    staticTexts?: StaticTexts | null;
 }
 
-export default function Process() {
-    const steps: Step[] = [
-        {
-            title: "Échange découverte",
-            description:
-                "On discute de votre projet autour d'un café (virtuel ou réel). Je comprends vos besoins, vos objectifs et votre budget. Vous repartez avec des premières pistes de réflexion, même si vous ne me choisissez pas.",
-        },
-        {
-            title: "Proposition & devis",
-            description:
-                "Je vous envoie une proposition détaillée : fonctionnalités, technologies, planning et tarif. Tout est clair, pas de surprise. Vous décidez en toute transparence.",
-        },
-        {
-            title: "Création du site",
-            description:
-                "Je développe votre site en vous tenant informé régulièrement. Vous avez accès à une version de travail pour suivre l'avancement et faire vos retours. Vous êtes impliqué autant que vous le souhaitez.",
-        },
-        {
-            title: "Formation & mise en ligne",
-            description:
-                "Je vous forme à l'utilisation de votre site (mise à jour de textes, des images, des contenus). Puis on lance le site ensemble. Vous êtes autonome, vous gérez votre site au quotidien.",
-        },
-    ];
-
+export default function Process({ steps, staticTexts }: ProcessProps) {
     function scrollToSection(section: string) {
         const el = document.getElementById(section);
         if (el) {
@@ -40,21 +20,31 @@ export default function Process() {
         }
     }
 
+    const title = staticTexts?.processTitle || "Comment On <span class='gradient'>Travaille Ensemble</span> ?";
+    const description =
+        staticTexts?.processDescription || "Un process simple et transparent, de l'idée à la mise en ligne";
+    const cta = staticTexts?.processCta || "Commençons par un échange gratuit";
+
+    if (!steps || steps.length === 0) {
+        return null;
+    }
+
     return (
         <section className="py-20 bg-linear-to-b from-violet-500/5 to-transparent">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4">
-                    Comment On <span className="gradient">Travaille Ensemble</span> ?
-                </h2>
+                <h2
+                    className="text-3xl sm:text-4xl font-bold text-center mb-4"
+                    dangerouslySetInnerHTML={{ __html: staticTexts?.processTitle || "" }}
+                />
                 <p className="text-center text-gray-400 mb-12 text-base sm:text-lg">
-                    Un process simple et transparent, de l'idée à la mise en ligne
+                    {staticTexts?.processDescription}
                 </p>
 
                 <div className="space-y-6 sm:space-y-8">
                     {steps.map((step, index) => (
                         <div
                             className="flex flex-col sm:flex-row gap-4 sm:gap-6"
-                            key={index}>
+                            key={step._id}>
                             <div className="shrink-0">
                                 <div className="w-12 h-12 rounded-full bg-violet-500/20 border-2 border-violet-500 flex items-center justify-center font-bold text-violet-400">
                                     {index + 1}
@@ -74,7 +64,7 @@ export default function Process() {
                         size="lg"
                         variant="outline"
                         onClick={() => scrollToSection("contact")}>
-                        Commençons par un échange gratuit
+                        {staticTexts?.processCta}
                     </Button>
                 </div>
             </div>

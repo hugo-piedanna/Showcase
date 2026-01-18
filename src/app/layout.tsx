@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import StyledComponentsRegistry from "@/lib/registry";
 export const dynamic = "force-dynamic";
 
 const geistSans = Geist({
@@ -165,7 +166,9 @@ export default function RootLayout({
                     }}
                 />
             </head>
-            <body className={`${geistSans.variable} ${geistMono.variable} antialiased `}>{children}</body>
+            <body className={`${geistSans.variable} ${geistMono.variable} antialiased `}>
+                <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+            </body>
         </html>
     );
 }

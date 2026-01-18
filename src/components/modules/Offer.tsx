@@ -1,46 +1,18 @@
+"use client";
+
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Offer, StaticTexts } from "@/lib/sanity.data";
 
-interface offer {
-    title: string;
-    description: string;
-    price: number;
-    details: string[];
-    ideals: string[];
-    cta: string;
-    link: string;
+interface OffersProps {
+    offers?: Offer[];
+    staticTexts?: StaticTexts | null;
 }
 
-export default function Offers() {
-    const offers: offer[] = [
-        {
-            title: "Site Vitrine Professionnel",
-            price: 1500,
-            description:
-                "Vous êtes <strong>artisan</strong>, <strong>consultant</strong> ou <strong>profession libérale</strong> et cherchez à créer un <strong>site vitrine</strong> qui reflète votre professionnalisme ? Je développe des <strong>sites internet vitrines</strong> modernes, rapides et optimisés pour attirer vos futurs clients.",
-            details: [
-                "Optimisation SEO et performance",
-                "Design moderne et responsive",
-                "Accompagnement jusqu’à la mise en ligne",
-                "Formation à la gestion du site",
-                "Formulaire de contact",
-                "Espace d'administration simple",
-            ],
-            ideals: ["Artisans", "Consultants", "TPE", "Professions libérales"],
-            cta: "Lancer mon site vitrine",
-            link: "https://buy.stripe.com/aFa14pejA5aLbOT2Lj4Ni01",
-        },
-        {
-            title: "Application Web Sur-Mesure",
-            price: -1,
-            description:
-                "Vous avez un projet d'<strong>application web</strong> spécifique ? Je développe des <strong>applications web</strong> complexes et performantes. Que ce soit un <strong>outil interne</strong>, une <strong>plateforme client</strong> ou un <strong>SaaS</strong>, je crée des solutions adaptées à vos besoins.",
-            details: [],
-            ideals: ["Startups", "SaaS", "Outils métier"],
-            cta: "Discuter de mon projet",
-            link: "https://buy.stripe.com/14AbJ3b7o7iT2ejbhP4Ni00",
-        },
-    ];
+export default function Offers({ offers, staticTexts }: OffersProps) {
+    if (!offers || offers.length === 0) {
+        return null;
+    }
 
     function scrollToSection(section: string) {
         const el = document.getElementById(section);
@@ -59,41 +31,47 @@ export default function Offers() {
             id="services">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div>
-                    <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4">
-                        Services de <span className="gradient">Développement Web</span>
-                    </h2>
+                    <h2
+                        className="text-3xl sm:text-4xl font-bold text-center mb-4"
+                        dangerouslySetInnerHTML={{ __html: staticTexts?.offersTitle || "" }}
+                    />
                     <p className="text-center text-gray-400 mb-12 text-base sm:text-lg">
-                        Des services adaptés à vos besoins et votre budget
+                        {staticTexts?.offersDescription}
                     </p>
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-start">
-                    {offers.map((offer, index) => (
+                    {offers.map((offer) => (
                         <Card
                             className="p-8"
-                            key={index}>
+                            key={offer._id}>
                             <CardTitle className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-0 mb-4">
                                 <h3 className="text-xl sm:text-2xl font-bold">{offer.title}</h3>
                                 {offer.price === -1 ? (
                                     <div>
-                                        <span className="text-2xl sm:text-3xl font-bold gradient">Sur devis</span>
+                                        <span className="text-2xl sm:text-3xl font-bold gradient">
+                                            {staticTexts?.offersOnQuoteLabel}
+                                        </span>
                                     </div>
                                 ) : (
                                     <div>
                                         <span className="text-2xl sm:text-3xl font-bold gradient">{offer.price}€</span>
-                                        <span className="text-gray-400 text-sm sm:text-base"> TTC</span>
+                                        <span className="text-gray-400 text-sm sm:text-base">
+                                            {" "}
+                                            {staticTexts?.offersTtcLabel}
+                                        </span>
                                     </div>
                                 )}
                             </CardTitle>
 
                             <p className="text-sm sm:text-base text-gray-400 mb-2">
-                                Idéal pour : {offer.ideals.join(", ")}
+                                {staticTexts?.offersIdealForLabel} {offer.ideals.join(", ")}
                             </p>
 
                             <CardDescription
                                 className="text-sm sm:text-base text-gray-300 mb-6"
                                 dangerouslySetInnerHTML={{ __html: offer.description }}
                             />
-                            {offer.details.length > 0 && (
+                            {offer.details && offer.details.length > 0 && (
                                 <div>
                                     <ul className="space-y-2 mb-6">
                                         {offer.details.map((detail, index) => (

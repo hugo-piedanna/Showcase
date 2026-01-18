@@ -3,30 +3,41 @@
 import { Dot } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import { StaticTexts } from "@/lib/sanity.data";
 
-export default function Footer() {
+interface FooterProps {
+    staticTexts?: StaticTexts | null;
+}
+
+export default function Footer({ staticTexts }: FooterProps) {
     return (
         <React.Fragment>
             <section className="border-t w-full py-6 sm:py-8 bg-background">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex flex-col sm:flex-row justify-between gap-6 sm:gap-8">
                         <div className="flex flex-col justify-center text-center sm:text-left">
-                            <h3 className="text-lg sm:text-base font-bold mb-3 sm:mb-4 gradient">Hugo Piedanna</h3>
+                            <h3 className="text-lg sm:text-base font-bold mb-3 sm:mb-4 gradient">
+                                {staticTexts?.footerTitle}
+                            </h3>
                             <div className="text-xs sm:text-sm text-gray-400">
                                 <p>
-                                    <strong>Développeur web freelance</strong> basé à Toulouse.
+                                    <strong
+                                        dangerouslySetInnerHTML={{ __html: staticTexts?.footerDescription1 || "" }}
+                                    />
                                 </p>
-                                <p>Création de sites professionnels pour TPE et PME.</p>
+                                <p>{staticTexts?.footerDescription2}</p>
                             </div>
                         </div>
                         <div className="text-center sm:text-left">
-                            <h4 className="hidden sm:block text-base font-semibold mb-4">Légal</h4>
+                            <h4 className="hidden sm:block text-base font-semibold mb-4">
+                                {staticTexts?.footerLegalTitle}
+                            </h4>
                             <ul className="flex flex-row items-center sm:items-start gap-3 sm:flex-col sm:space-y-2 sm:gap-0 text-xs sm:text-sm text-gray-400 justify-center sm:justify-start">
                                 <li>
                                     <Link
                                         href="/CGU"
                                         className="hover:text-violet-400">
-                                        CGU
+                                        {staticTexts?.footerCguLabel}
                                     </Link>
                                 </li>
                                 <Dot
@@ -37,7 +48,7 @@ export default function Footer() {
                                     <Link
                                         href="/privacyPolicy"
                                         className="hover:text-violet-400">
-                                        Confidentialité
+                                        {staticTexts?.footerPrivacyLabel}
                                     </Link>
                                 </li>
                                 <Dot
@@ -48,7 +59,7 @@ export default function Footer() {
                                     <Link
                                         href="/CGV"
                                         className="hover:text-violet-400">
-                                        CGV
+                                        {staticTexts?.footerCgvLabel}
                                     </Link>
                                 </li>
                             </ul>
@@ -62,7 +73,7 @@ export default function Footer() {
                         <p
                             className="text-xs sm:text-sm text-gray-400 text-center sm:text-left"
                             suppressHydrationWarning>
-                            © {new Date().getFullYear()} Hugo Piedanna - Développeur web freelance • Fait avec ❤️
+                            © {new Date().getFullYear()} {staticTexts?.footerCopyright}
                         </p>
                         <div className="flex gap-3 sm:gap-4">
                             <Link

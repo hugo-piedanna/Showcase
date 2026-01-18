@@ -3,8 +3,13 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import illustration from "@/assets/Illustration.webp";
+import { StaticTexts } from "@/lib/sanity.data";
 
-export default function Home() {
+interface HeroProps {
+    staticTexts?: StaticTexts | null;
+}
+
+export default function Hero({ staticTexts }: HeroProps) {
     function scrollToSection(section: string) {
         const el = document.getElementById(section);
         if (el) {
@@ -23,39 +28,40 @@ export default function Home() {
                     <div>
                         <div className="mt-2 inline-flex items-center gap-2 px-3 py-1 bg-violet-500/10 border border-violet-500/20 rounded-full mb-6">
                             <span className="w-2 h-2 bg-violet-400 rounded-full animate-pulse"></span>
-                            <span className="text-sm text-violet-400">Disponible pour nouveaux projets</span>
+                            <span
+                                className="text-sm text-violet-400"
+                                dangerouslySetInnerHTML={{ __html: staticTexts?.heroAvailabilityText || "" }}></span>
                         </div>
-                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                            Développeur Web Freelance à <span className="gradient">Toulouse</span>
-                        </h1>
-                        <p className="text-base sm:text-lg md:text-xl text-gray-400 mb-8">
-                            Expert en <strong>développement web</strong> et <strong>création de sites internet</strong>,
-                            je transforme vos projets en <strong>sites professionnels performants</strong>. Sites
-                            vitrine, e-commerce, applications web : des solutions digitales adaptées aux TPE, PME et
-                            entrepreneurs.
-                        </p>
-                        <p className="text-sm sm:text-base text-gray-400 mb-8">
-                            Vous cherchez un <strong>développeur web freelance</strong> pour{" "}
-                            <strong>créer votre site internet</strong> ? Je conçois des{" "}
-                            <strong>sites web sur-mesure</strong>, modernes et optimisés pour le référencement naturel.
-                            Basé à <strong>Toulouse</strong>, j'interviens partout en France pour vos projets de{" "}
-                            <strong>création site vitrine</strong>, <strong>boutique en ligne</strong> ou{" "}
-                            <strong>développement d'application web</strong>.
-                        </p>
+                        <h1
+                            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+                            dangerouslySetInnerHTML={{ __html: staticTexts?.heroTitle || "" }}
+                        />
+                        {staticTexts?.heroSubtitle && (
+                            <p
+                                className="text-base sm:text-lg md:text-xl text-gray-400 mb-8"
+                                dangerouslySetInnerHTML={{ __html: staticTexts?.heroSubtitle }}
+                            />
+                        )}
+                        {staticTexts?.heroDescription && (
+                            <p
+                                className="text-sm sm:text-base text-gray-400 mb-8"
+                                dangerouslySetInnerHTML={{ __html: staticTexts?.heroDescription }}
+                            />
+                        )}
 
                         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                             <Button
                                 className="duration-300 transition-colors w-full sm:w-auto"
                                 size={"lg"}
                                 onClick={() => scrollToSection("contact")}>
-                                Discutons de votre projet
+                                {staticTexts?.heroCtaPrimary}
                             </Button>
                             <Button
                                 className="duration-300 transition-colors w-full sm:w-auto"
                                 size={"lg"}
                                 variant="outline"
                                 onClick={() => scrollToSection("realisations")}>
-                                Voir mes réalisations
+                                {staticTexts?.heroCtaSecondary}
                             </Button>
                         </div>
                     </div>

@@ -3,20 +3,30 @@
 import Link from "next/link";
 import { Card } from "@/components/ui/card";
 import { useState } from "react";
+import { StaticTexts } from "@/lib/sanity.data";
 
-export default function Contact() {
+interface ContactProps {
+    staticTexts?: StaticTexts | null;
+}
+
+export default function Contact({ staticTexts }: ContactProps) {
     const [visible, setVisible] = useState<boolean>(false);
+
+    const raw = staticTexts?.contactPhone || "";
+    const digits = raw.replace(/\D/g, "");
+    const formatted = digits.replace(/(.{2})/g, "$1 ").trim();
 
     return (
         <section
             id="contact"
             className="py-20 bg-linear-to-b from-violet-500/5 to-transparent">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4">
-                    Prêt à Lancer Votre <span className="gradient">Projet</span> ?
-                </h2>
+                <h2
+                    className="text-3xl sm:text-4xl font-bold text-center mb-4"
+                    dangerouslySetInnerHTML={{ __html: staticTexts?.contactTitle || "" }}
+                />
                 <p className="text-center text-gray-400 mb-12 text-base sm:text-lg">
-                    Contactez-moi directement par le canal qui vous convient. Je vous réponds sous 24h.
+                    {staticTexts?.contactDescription}
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
@@ -29,13 +39,13 @@ export default function Contact() {
                                 <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                             </svg>
                         </div>
-                        <h3 className="text-lg sm:text-xl font-bold mb-2">LinkedIn</h3>
-                        <p className="text-gray-400 text-sm mb-4">Pour un contact professionnel</p>
+                        <h3 className="text-lg sm:text-xl font-bold mb-2">{staticTexts?.contactLinkedinTitle}</h3>
+                        <p className="text-gray-400 text-sm mb-4">{staticTexts?.contactLinkedinSubtext}</p>
                         <Link
-                            href="https://www.linkedin.com/in/hugo-piedanna-a80570246"
+                            href={staticTexts?.contactLinkedLink || "#"}
                             className="text-violet-400 font-semibold hover:underline"
                             target="_blank">
-                            Me contacter sur LinkedIn →
+                            {staticTexts?.contactLinkedinCta}
                         </Link>
                     </Card>
 
@@ -54,12 +64,12 @@ export default function Contact() {
                                 />
                             </svg>
                         </div>
-                        <h3 className="text-lg sm:text-xl font-bold mb-2">Email</h3>
-                        <p className="text-gray-400 text-sm mb-4">Pour une demande détaillée</p>
+                        <h3 className="text-lg sm:text-xl font-bold mb-2">{staticTexts?.contactEmailTitle}</h3>
+                        <p className="text-gray-400 text-sm mb-4">{staticTexts?.contactEmailSubtext}</p>
                         <Link
-                            href="mailto:hugo@piedanna.dev"
+                            href={`mailto:${staticTexts?.contactEmail || ""}`}
                             className="text-violet-400 font-semibold hover:underline break-all">
-                            hugo@piedanna.dev
+                            {staticTexts?.contactEmail}
                         </Link>
                     </Card>
 
@@ -78,21 +88,21 @@ export default function Contact() {
                                 />
                             </svg>
                         </div>
-                        <h3 className="text-lg sm:text-xl font-bold mb-2">Téléphone</h3>
-                        <p className="text-gray-400 text-sm mb-4">Pour un échange rapide</p>
+                        <h3 className="text-lg sm:text-xl font-bold mb-2">{staticTexts?.contactPhoneTitle}</h3>
+                        <p className="text-gray-400 text-sm mb-4">{staticTexts?.contactPhoneSubtext}</p>
                         {visible === false ? (
                             <button
                                 onClick={() => setVisible(true)}
                                 id="phoneBtn"
                                 className="text-violet-400 font-semibold hover:underline cursor-pointer">
-                                Afficher le numéro →
+                                {staticTexts?.contactPhoneButtonText}
                             </button>
                         ) : (
                             <Link
-                                href="tel:+33617424794"
+                                href={`tel:${digits}`}
                                 id="phoneNumber"
                                 className="text-violet-400 font-semibold hover:underline">
-                                06 17 42 47 94
+                                {formatted}
                             </Link>
                         )}
                     </Card>
@@ -101,21 +111,22 @@ export default function Contact() {
                 <Card className="p-4 sm:p-6 lg:p-8">
                     <div className="flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6">
                         <div className="flex-1">
-                            <h3 className="text-lg sm:text-xl font-bold mb-2">📍 Basé à Toulouse, Haute-Garonne</h3>
-                            <p className="text-sm sm:text-base text-gray-400">
-                                J'interviens sur <strong>Toulouse</strong>, <strong>Haute-Garonne</strong> et toute la{" "}
-                                <strong>France</strong> en télétravail. Disponibilité pour des rendez-vous en visio ou
-                                en présentiel selon votre localisation.
-                            </p>
+                            <h3 className="text-lg sm:text-xl font-bold mb-2">📍 {staticTexts?.contactLocation}</h3>
+                            <p
+                                className="text-sm sm:text-base text-gray-400"
+                                dangerouslySetInnerHTML={{ __html: staticTexts?.contactLocationDescription || "" }}
+                            />
                         </div>
                         <div className="text-center md:text-right">
-                            <p className="text-xs sm:text-sm text-gray-400 mb-2">Disponibilité</p>
-                            <p className="text-sm sm:text-base font-semibold">Lundi - Samedi</p>
-                            <p className="text-sm sm:text-base text-gray-400">9h30 - 18h00</p>
+                            <p className="text-xs sm:text-sm text-gray-400 mb-2">
+                                {staticTexts?.contactAvailabilityLabel}
+                            </p>
+                            <p className="text-sm sm:text-base font-semibold">{staticTexts?.availabilityDays}</p>
+                            <p className="text-sm sm:text-base text-gray-400">{staticTexts?.availabilityHours}</p>
                             <div className="mt-2 inline-flex items-center gap-2 px-2 sm:px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full">
                                 <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
                                 <span className="text-xs sm:text-sm text-green-400">
-                                    Disponible pour nouveaux projets
+                                    {staticTexts?.contactAvailabilityLabel}
                                 </span>
                             </div>
                         </div>
@@ -134,7 +145,7 @@ export default function Contact() {
                                 clipRule="evenodd"
                             />
                         </svg>
-                        <p className="text-sm font-semibold">Premier échange gratuit</p>
+                        <p className="text-sm font-semibold">{staticTexts?.contactBadge1}</p>
                     </div>
                     <div className="flex flex-row items-center justify-center gap-2">
                         <svg
@@ -147,7 +158,7 @@ export default function Contact() {
                                 clipRule="evenodd"
                             />
                         </svg>
-                        <p className="text-sm font-semibold">Réponse sous 24h</p>
+                        <p className="text-sm font-semibold">{staticTexts?.contactBadge2}</p>
                     </div>
                     <div className="flex flex-row items-center justify-center gap-2">
                         <svg
@@ -160,7 +171,7 @@ export default function Contact() {
                                 clipRule="evenodd"
                             />
                         </svg>
-                        <p className="text-sm font-semibold">Sans engagement</p>
+                        <p className="text-sm font-semibold">{staticTexts?.contactBadge3}</p>
                     </div>
                 </div>
             </div>
