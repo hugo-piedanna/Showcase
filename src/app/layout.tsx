@@ -15,40 +15,44 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    title: "Pack Site + Formations pour indépendants & TPE – Hugo Piedanna",
+    title: "Développeur Web Freelance Toulouse | Création Site Internet Professionnel",
     description:
-        "Boostez votre visibilité et vos conversions ! Site vitrine sur-mesure + 3 formations pour être autonome. Livraison rapide, accompagnement inclus. Par Hugo Piedanna, développeur web freelance à Toulouse.",
+        "Développeur web freelance spécialisé création site vitrine, e-commerce et application web. Sites modernes, rapides et optimisés SEO. Devis gratuit, livraison rapide. Basé à Toulouse, intervention France entière.",
     keywords: [
-        "pack site web",
-        "formations web",
-        "création site internet",
-        "site professionnel indépendant",
-        "freelance Next.js",
-        "site pour petites entreprises",
-        "Hugo Piedanna",
-        "site + formations",
-        "développeur web Toulouse",
         "développeur web freelance",
-        "création site vitrine sur-mesure",
-        "site internet pour indépendants",
-        "formation SEO et Copywriting",
-        "optimiser site web pour conversion",
-        "freelance Toulouse / France",
-        "accompagnement site web",
-        "site rapide et professionnel",
+        "création site internet",
+        "développeur freelance",
+        "site web sur-mesure",
+        "développeur web Toulouse",
+        "création site vitrine",
+        "site internet professionnel",
+        "développeur react freelance",
+        "site web Toulouse",
+        "développeur Next.js",
+        "Hugo Piedanna",
+        "freelance web Toulouse",
+        "création site e-commerce",
+        "application web sur-mesure",
+        "refonte site web",
+        "site responsive",
+        "optimisation SEO",
+        "développeur indépendant",
+        "site vitrine TPE PME",
+        "développeur web Gironde",
+        "freelance Nouvelle-Aquitaine",
     ],
     openGraph: {
-        title: "Site vitrine + Formations pour indépendants – Hugo Piedanna",
+        title: "Développeur Web Freelance Toulouse | Sites Modernes & Performants",
         description:
-            "Pack complet : site sur-mesure livré en 1 semaine + 3 formations SEO, UX/UI, Copywriting pour être autonome et convertir plus.",
+            "Création de sites vitrine et applications web sur-mesure. Développeur freelance React/Next.js. Livraison en 3 semaines, interface admin incluse. Toulouse & France entière.",
         url: "https://piedanna.dev",
-        siteName: "Hugo Piedanna - Pack Site + Formations",
+        siteName: "Hugo Piedanna - Développeur Web Freelance",
         images: [
             {
                 url: "https://piedanna.dev/og-image.png",
                 width: 1200,
                 height: 630,
-                alt: "Pack site + formations freelance",
+                alt: "Hugo Piedanna - Développeur Web Freelance Toulouse",
             },
         ],
         locale: "fr_FR",
@@ -56,9 +60,9 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: "summary_large_image",
-        title: "Site vitrine + Formations pour indépendants – Hugo Piedanna",
+        title: "Hugo Piedanna | Développeur Web Freelance Toulouse",
         description:
-            "Pack complet : site sur-mesure livré en 1 semaine + 3 formations SEO, UX/UI, Copywriting pour être autonome et convertir plus.",
+            "Création de sites vitrine et applications web sur-mesure. Basé à Toulouse, disponible dans toute la France.",
         images: ["https://piedanna.dev/og-image.png"],
     },
     robots: {
@@ -90,6 +94,7 @@ export default function RootLayout({
                     content="index, follow"
                 />
 
+                {/* Données structurées Schema.org */}
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{
@@ -100,36 +105,116 @@ export default function RootLayout({
                                     "@type": "Person",
                                     "@id": "https://piedanna.dev#hugo",
                                     name: "Hugo Piedanna",
-                                    jobTitle: "Développeur web freelance",
+                                    jobTitle: "Développeur Web Freelance",
+                                    description:
+                                        "Développeur web freelance spécialisé en création de sites vitrine et applications web sur-mesure. Expert React, Next.js et développement moderne.",
                                     image: "https://piedanna.dev/og-image.png",
                                     url: "https://piedanna.dev",
-                                    sameAs: ["https://www.linkedin.com/in/hugo-piedanna-a80570246/"],
+                                    email: "hugo@piedanna.dev",
+                                    sameAs: [
+                                        "https://www.linkedin.com/in/hugo-piedanna-a80570246/",
+                                        "https://github.com/hugo-piedanna", // Ajoute ton GitHub si public
+                                    ],
+                                    worksFor: {
+                                        "@type": "Organization",
+                                        name: "Hugo Piedanna - Développeur Web Freelance",
+                                    },
+                                    knowsAbout: [
+                                        "Développement Web",
+                                        "React",
+                                        "Next.js",
+                                        "JavaScript",
+                                        "TypeScript",
+                                        "SEO",
+                                        "UX/UI Design",
+                                    ],
                                 },
                                 {
-                                    "@type": "LocalBusiness",
+                                    "@type": "ProfessionalService",
                                     "@id": "https://piedanna.dev#business",
-                                    name: "Hugo Piedanna - Développeur Web",
+                                    name: "Hugo Piedanna - Développeur Web Freelance",
+                                    description:
+                                        "Création de sites internet professionnels et applications web sur-mesure pour TPE, PME et entrepreneurs. Sites vitrines, e-commerce, applications métier.",
                                     url: "https://piedanna.dev",
                                     image: "https://piedanna.dev/og-image.png",
                                     priceRange: "€€",
+                                    telephone: "+33-6-17-42-47-94",
+                                    email: "hugo@piedanna.dev",
                                     address: {
                                         "@type": "PostalAddress",
-                                        postalCode: "31000",
                                         addressLocality: "Toulouse",
+                                        addressRegion: "Occitanie",
+                                        postalCode: "31000",
                                         addressCountry: "FR",
                                     },
-                                    potentialAction: {
-                                        "@type": "ReserveAction",
-                                        target: {
-                                            "@type": "EntryPoint",
-                                            urlTemplate: "https://calendly.com/hugo-piedanna/appel-decouverte",
-                                            inLanguage: "fr",
-                                            actionPlatform: [
-                                                "http://schema.org/DesktopWebPlatform",
-                                                "http://schema.org/MobileWebPlatform",
-                                            ],
-                                        },
+                                    geo: {
+                                        "@type": "GeoCoordinates",
+                                        latitude: 43.60437768490977,
+                                        longitude: 1.443378890799077,
                                     },
+                                    areaServed: [
+                                        {
+                                            "@type": "City",
+                                            name: "Toulouse",
+                                        },
+                                        {
+                                            "@type": "State",
+                                            name: "Haute-Garonne",
+                                        },
+                                        {
+                                            "@type": "State",
+                                            name: "Occitanie",
+                                        },
+                                        {
+                                            "@type": "Country",
+                                            name: "France",
+                                        },
+                                    ],
+                                    hasOfferCatalog: {
+                                        "@type": "OfferCatalog",
+                                        name: "Services de développement web",
+                                        itemListElement: [
+                                            {
+                                                "@type": "Offer",
+                                                itemOffered: {
+                                                    "@type": "Service",
+                                                    name: "Création Site Vitrine Professionnel",
+                                                    description:
+                                                        "Site vitrine moderne, responsive et optimisé SEO avec interface d'administration. Idéal pour artisans, consultants, TPE et professions libérales.",
+                                                    provider: {
+                                                        "@id": "https://piedanna.dev#business",
+                                                    },
+                                                },
+                                                price: "1500",
+                                                priceCurrency: "EUR",
+                                            },
+                                            {
+                                                "@type": "Offer",
+                                                itemOffered: {
+                                                    "@type": "Service",
+                                                    name: "Projet Sur-Mesure",
+                                                    description:
+                                                        "E-commerce, applications web, plateformes métier, refonte complète. Solutions personnalisées selon vos besoins.",
+                                                    provider: {
+                                                        "@id": "https://piedanna.dev#business",
+                                                    },
+                                                },
+                                                priceSpecification: {
+                                                    "@type": "PriceSpecification",
+                                                    priceCurrency: "EUR",
+                                                    price: "Sur devis",
+                                                },
+                                            },
+                                        ],
+                                    },
+                                    openingHoursSpecification: [
+                                        {
+                                            "@type": "OpeningHoursSpecification",
+                                            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                                            opens: "09:00",
+                                            closes: "18:00",
+                                        },
+                                    ],
                                 },
                                 {
                                     "@type": "FAQPage",
@@ -137,29 +222,57 @@ export default function RootLayout({
                                     mainEntity: [
                                         {
                                             "@type": "Question",
-                                            name: "Et si ça ne marche pas ?",
+                                            name: "Combien coûte la création d'un site web par un développeur freelance ?",
                                             acceptedAnswer: {
                                                 "@type": "Answer",
-                                                text: "C’est ta plus grande peur. Justement, tu ne payes pas seulement pour un site ou une méthode : tu payes pour comprendre. Tu appliques les bases, tu vois les résultats, tu progresses. L’objectif : que tu sois autonome et jamais bloqué.",
+                                                text: "Le prix d'un site web varie selon la complexité : un site vitrine coûte entre 1200€ et 3000€, un site e-commerce entre 2500€ et 8000€, et une application web sur-mesure à partir de 5000€. Ces tarifs incluent le design, le développement, l'hébergement première année et la formation.",
                                             },
                                         },
                                         {
                                             "@type": "Question",
-                                            name: "Je débute totalement, est-ce que c’est pour moi ?",
+                                            name: "Combien de temps pour avoir mon site en ligne ?",
                                             acceptedAnswer: {
                                                 "@type": "Answer",
-                                                text: "Oui. Tout est pensé pour les indépendants qui n’ont aucune base technique. Tu n’as pas besoin de “parler geek” pour appliquer.",
+                                                text: "Entre 3 et 6 semaines selon la complexité du projet et votre réactivité pour fournir les contenus (textes, images). Un site vitrine : environ 3 semaines. Un e-commerce : 4 à 6 semaines.",
                                             },
                                         },
                                         {
                                             "@type": "Question",
-                                            name: "Combien de temps ça prend ?",
+                                            name: "Proposez-vous un paiement échelonné pour la création de site ?",
                                             acceptedAnswer: {
                                                 "@type": "Answer",
-                                                text: "Chaque formation se lit et se met en pratique en moins d’une heure. Tu peux avancer pas à pas, sans pression, et voir des résultats rapidement.",
+                                                text: "Oui, paiement en 3 fois sans frais pour tout projet supérieur à 2000€ : 30% à la signature, 40% à mi-projet, 30% à la livraison. Cette facilité de paiement rend la création de site web accessible à tous les budgets.",
+                                            },
+                                        },
+                                        {
+                                            "@type": "Question",
+                                            name: "Est-ce que je pourrai modifier mon site moi-même ?",
+                                            acceptedAnswer: {
+                                                "@type": "Answer",
+                                                text: "Oui ! Vous aurez accès à une interface d'administration intuitive pour modifier vos textes, images, ajouter des pages simples. Je vous forme à son utilisation. Pour des modifications plus complexes, je reste disponible.",
+                                            },
+                                        },
+                                        {
+                                            "@type": "Question",
+                                            name: "Travaillez-vous avec des clients hors de Toulouse ?",
+                                            acceptedAnswer: {
+                                                "@type": "Answer",
+                                                text: "Absolument ! 80% de mes échanges se font en visio. Que vous soyez à Paris, Lyon, Marseille ou ailleurs en France, on travaille ensemble sans problème. Basé à Toulouse, j'interviens partout en France.",
                                             },
                                         },
                                     ],
+                                },
+                                {
+                                    "@type": "WebSite",
+                                    "@id": "https://piedanna.dev#website",
+                                    url: "https://piedanna.dev",
+                                    name: "Hugo Piedanna - Développeur Web Freelance",
+                                    description:
+                                        "Développeur web freelance spécialisé création site vitrine, e-commerce et application web. Toulouse & France entière.",
+                                    publisher: {
+                                        "@id": "https://piedanna.dev#hugo",
+                                    },
+                                    inLanguage: "fr-FR",
                                 },
                             ],
                         }),
