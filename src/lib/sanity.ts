@@ -1,8 +1,3 @@
-import { createClient } from "@sanity/client";
-
-export const sanityClient = createClient({
-    projectId: "h29ua7in",
-    dataset: "production",
-    apiVersion: "2025-01-17",
-    useCdn: true,
-});
+// Ce fichier est maintenant obsolète, utilisez ./sanity-client.ts
+// Exporté pour la compatibilité avec les anciens imports
+export { sanityClient, fetchWithRetry } from "./sanity-client";

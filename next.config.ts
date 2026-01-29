@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    compress: true,
+    poweredByHeader: false,
     typescript: {
         ignoreBuildErrors: true,
     },
@@ -17,6 +19,11 @@ const nextConfig = {
                 pathname: '/**',
             },
         ],
+    },
+    experimental: {
+        serverActions: {
+            bodySizeLimit: '2mb',
+        },
     },
     webpack: (config, { isServer }) => {
         if (!isServer) {

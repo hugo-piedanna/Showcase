@@ -1,4 +1,4 @@
-import { sanityClient } from "./sanity";
+import { fetchWithRetry } from "./sanity-client";
 import {
     faqQuery,
     navItemsQuery,
@@ -165,7 +165,7 @@ export interface StaticTexts {
 
 export async function getTrustItems(): Promise<TrustItem[]> {
     try {
-        return await sanityClient.fetch(trustItemsQuery);
+        return await fetchWithRetry<TrustItem[]>(trustItemsQuery);
     } catch (error) {
         console.error("Error fetching trust items:", error);
         return [];
@@ -174,7 +174,7 @@ export async function getTrustItems(): Promise<TrustItem[]> {
 
 export async function getProblemItems(): Promise<ProblemItem[]> {
     try {
-        return await sanityClient.fetch(problemItemsQuery);
+        return await fetchWithRetry<ProblemItem[]>(problemItemsQuery);
     } catch (error) {
         console.error("Error fetching problem items:", error);
         return [];
@@ -183,7 +183,7 @@ export async function getProblemItems(): Promise<ProblemItem[]> {
 
 export async function getSolutionItems(): Promise<SolutionItem[]> {
     try {
-        return await sanityClient.fetch(solutionItemsQuery);
+        return await fetchWithRetry<SolutionItem[]>(solutionItemsQuery);
     } catch (error) {
         console.error("Error fetching solution items:", error);
         return [];
@@ -192,7 +192,7 @@ export async function getSolutionItems(): Promise<SolutionItem[]> {
 
 export async function getProcessSteps(): Promise<ProcessStep[]> {
     try {
-        return await sanityClient.fetch(processStepsQuery);
+        return await fetchWithRetry<ProcessStep[]>(processStepsQuery);
     } catch (error) {
         console.error("Error fetching process steps:", error);
         return [];
@@ -201,7 +201,7 @@ export async function getProcessSteps(): Promise<ProcessStep[]> {
 
 export async function getStaticTexts(): Promise<StaticTexts | null> {
     try {
-        return await sanityClient.fetch(staticTextsQuery);
+        return await fetchWithRetry<StaticTexts>(staticTextsQuery);
     } catch (error) {
         console.error("Error fetching static texts:", error);
         return null;
@@ -210,7 +210,7 @@ export async function getStaticTexts(): Promise<StaticTexts | null> {
 
 export async function getFAQs(): Promise<FAQ[]> {
     try {
-        return await sanityClient.fetch(faqQuery);
+        return await fetchWithRetry<FAQ[]>(faqQuery);
     } catch (error) {
         console.error("Error fetching FAQs:", error);
         return [];
@@ -219,7 +219,7 @@ export async function getFAQs(): Promise<FAQ[]> {
 
 export async function getNavItems(): Promise<NavItem[]> {
     try {
-        return await sanityClient.fetch(navItemsQuery);
+        return await fetchWithRetry<NavItem[]>(navItemsQuery);
     } catch (error) {
         console.error("Error fetching nav items:", error);
         return [];
@@ -228,7 +228,7 @@ export async function getNavItems(): Promise<NavItem[]> {
 
 export async function getProjects(): Promise<Project[]> {
     try {
-        return await sanityClient.fetch(projectsQuery);
+        return await fetchWithRetry<Project[]>(projectsQuery);
     } catch (error) {
         console.error("Error fetching projects:", error);
         return [];
@@ -237,7 +237,7 @@ export async function getProjects(): Promise<Project[]> {
 
 export async function getOffers(): Promise<Offer[]> {
     try {
-        return await sanityClient.fetch(offersQuery);
+        return await fetchWithRetry<Offer[]>(offersQuery);
     } catch (error) {
         console.error("Error fetching offers:", error);
         return [];
