@@ -97,19 +97,6 @@ export function Faq({ className }: { className?: string }) {
   const disableParallax = useDisableParallax();
   const { ref, progress } = useSectionProgress(disableParallax, 0.4);
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: siteConfig.faqs.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.answer,
-      },
-    })),
-  };
-
   return (
     <section
       ref={ref}
@@ -120,10 +107,6 @@ export function Faq({ className }: { className?: string }) {
         className,
       )}
     >
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <FaqBackdrop progress={progress} reducedMotion={disableParallax} />
 
       <div className="relative mx-auto max-w-6xl px-6 py-20 sm:px-10 lg:px-16 lg:py-28">

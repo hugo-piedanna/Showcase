@@ -50,8 +50,15 @@ export function ThemeTransitionProvider({
     setMounted(true);
   }, []);
 
-  const idleNightness =
-    resolvedTheme === "dark" ? 1 : resolvedTheme === "light" ? 0 : nightness;
+  // Ignorer resolvedTheme tant que non monté : next-themes le résout
+  // côté client avant l'hydratation, ce qui casserait le match SSR (jour).
+  const idleNightness = !mounted
+    ? nightness
+    : resolvedTheme === "dark"
+      ? 1
+      : resolvedTheme === "light"
+        ? 0
+        : nightness;
   const displayNightness = isTransitioning ? nightness : idleNightness;
 
   const toggleTheme = React.useCallback(() => {
