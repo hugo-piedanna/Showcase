@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="14" fill="#3d6b45"/>
+  <circle cx="54" cy="8" r="20" fill="#4f7d57" opacity="0.4"/>
+  <!-- HP — balanced geometric cuts -->
+  <g fill="#e8f0dc">
+    <!-- H -->
+    <path d="M11 15h7v12.5h8.5V15H34v30h-7.5V35.5H18V45H11z"/>
+    <!-- P -->
+    <path d="M38.5 15H51c5.8 0 9.8 3.4 9.8 8.8S56.8 32.5 51 32.5H46V45h-7.5zm7.5 6.2v5.1H50c2.4 0 3.8-1.2 3.8-2.55S52.4 21.2 50 21.2z"/>
+  </g>
+  <!-- mountain ridge footer only -->
+  <path d="M0 56 L16 46 L26 52 L40 42 L64 56 V64 H0 Z" fill="#2a4f38"/>
+  <path d="M0 56 L16 48 L24 53 L38 44 L64 56 V58 L38 46 L24 54 L16 49 L0 57 Z" fill="#c5d6b8" opacity="0.35"/>
+</svg>
